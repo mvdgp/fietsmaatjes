@@ -1,38 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { buildMenu } from '@/utils/menu-builder';
 import SubMenu from '@/components/sub-menu';
 import { useMediaQuery } from 'react-responsive';
 
-const NavigationMenu = () => {
+const NavigationMenu = ({ menuItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
-  const [currentPath, setCurrentPath] = useState('');
   const navRef = useRef(null);
   const isMediumScreen = useMediaQuery({ query: '(min-width: 768px)' });
-  const [menuItems, setMenuItems] = useState([]);
-
-    // Fetch menu items from Prismic
-    useEffect(() => {
-        const fetchMenu = async () => {
-          try {
-            const menuData = await buildMenu();
-            setMenuItems(menuData);
-          } catch (error) {
-            console.error('Error fetching menu:', error);
-          }
-        };
-    
-        fetchMenu();
-      }, []);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setCurrentPath(window.location.pathname);
-    }
-  }, []);
 
   // Toggle the main menu
   const toggleMenu = () => {
@@ -87,10 +64,6 @@ const NavigationMenu = () => {
     }
   };
 
-  if (!currentPath) {
-    return null;
-  }
-
   return (
     <nav ref={navRef}>
       {/* Mobile menu button */}
@@ -114,7 +87,7 @@ const NavigationMenu = () => {
       </div>
 
       {/* Main menu */}
-      <ul className={`flex gap-6 ${isOpen ? 'flex-col absolute px-6 pt-8 bg-primary rounded w-[330px]' : 'hidden'} md:flex`}>
+      <ul className={`pb-4 md:pb-0 flex gap-6 ${isOpen ? 'flex-col absolute px-6 pt-8 bg-primary rounded w-[330px]' : 'hidden'} md:flex`}>
         {menuItems.map((item) => (
           <li
             key={item.id}
@@ -124,7 +97,7 @@ const NavigationMenu = () => {
           >
             <a
               href={item.url}
-              className={`font-bold text-base ${currentPath.includes(item.url) ? 'text-tertiary' : 'text-white'} hover:text-secondary hover:no-underline`}
+              className="font-bold text-base text-white hover:text-secondary hover:no-underline"
               onClick={handleMenuItemClick}
             >
               {item.label}
@@ -152,7 +125,7 @@ const NavigationMenu = () => {
                 onMouseEnter={() => handleMouseEnter(item)}
                 onMouseLeave={() => handleMouseLeave(item)}
               >
-                <SubMenu menuItem={item} currentPath={currentPath} />
+                <SubMenu menuItem={item} />
               </div>
             )}
           </li>

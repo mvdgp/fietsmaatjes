@@ -1,4 +1,4 @@
-const SubMenu = ({ menuItem, currentPath }) => {
+const SubMenu = ({ menuItem }) => {
 
     return (
         <nav>
@@ -7,7 +7,7 @@ const SubMenu = ({ menuItem, currentPath }) => {
                     <li key={subItem.id} className="list-none">
                         <a
                             href={subItem.url}
-                            className={`text-sm text-white hover:text-secondary hover:no-underline ${currentPath.includes(subItem.url) ? 'text-fm-tertiary' : ''}`}
+                            className="text-sm text-white hover:text-secondary hover:no-underline"
                         >
                             {subItem.label}
                         </a>

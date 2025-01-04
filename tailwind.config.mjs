@@ -12,7 +12,7 @@ const tailwindConfig = {
         'secondary': '#97C8E7',
         'tertiary': '#FFEC00',
         'quaternary': '#F5F5F5',
-        'fm-tertiary': '#FFEC00', //Because of a hard bug in Tailwind not applying to #Submenu.jsx
+        
       },
       fontFamily: {
         'fm-font': ['Inter', 'sans-serif'],

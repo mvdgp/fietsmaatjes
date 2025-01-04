@@ -1,4 +1,8 @@
+import { usePathname } from 'next/navigation';
+
 const SubMenu = ({ menuItem }) => {
+
+    const pathName = usePathname();
 
     return (
         <nav>
@@ -7,7 +11,7 @@ const SubMenu = ({ menuItem }) => {
                     <li key={subItem.id} className="list-none">
                         <a
                             href={subItem.url}
-                            className="text-sm text-white hover:text-secondary hover:no-underline"
+                            className={`text-sm text-white hover:text-secondary hover:no-underline ${pathName.includes(subItem.uid) ? 'text-tertiary' : ''}`}
                         >
                             {subItem.label}
                         </a>

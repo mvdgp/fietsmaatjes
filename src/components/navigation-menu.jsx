@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import SubMenu from '@/components/sub-menu';
 import { useMediaQuery } from 'react-responsive';
+import { usePathname } from 'next/navigation';
+import SubMenu from '@/components/sub-menu';
 
 const NavigationMenu = ({ menuItems }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,7 @@ const NavigationMenu = ({ menuItems }) => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const navRef = useRef(null);
   const isMediumScreen = useMediaQuery({ query: '(min-width: 768px)' });
+  const pathName = usePathname();
 
   // Toggle the main menu
   const toggleMenu = () => {
@@ -97,7 +99,7 @@ const NavigationMenu = ({ menuItems }) => {
           >
             <a
               href={item.url}
-              className="font-bold text-base text-white hover:text-secondary hover:no-underline"
+              className={`font-bold text-base text-white hover:text-secondary hover:no-underline ${pathName.includes(item.uid) ? 'text-tertiary' : ''}`}
               onClick={handleMenuItemClick}
             >
               {item.label}

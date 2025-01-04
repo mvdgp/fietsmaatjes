@@ -1,22 +1,17 @@
-import { createClient } from '../prismicio';
-
-async function fetchPageData() {
-  const client = createClient();
-  const page = await client.getByUID('page', 'home');
-  console.log(JSON.stringify(page));
-  return page;
-}
+import { renderContent } from '@/utils/prismic-fetcher';
 
 export default async function Home() {
-  const page = await fetchPageData();
+  const pageId = 'Z3g-cRIAACwAIyPI';
+  const pageUrl = 'home';
+  const page = await renderContent(pageId);
 
   return (
     <div className="container h-full flex flex-col">
-      <main className="flex-grow overflow-auto">
-        {JSON.stringify(page)}
+      <main className="flex-grow overflow-auto break-words whitespace-normal">
+        {page ? JSON.stringify(page) : 'De pagina kon niet geladen worden.'}
       </main>
-      <footer className="w-full h-12 border-t border-primary flex items-center justify-center">
-        <h6>Website door <a href="www.manoukvandraanen.com" target="_blank" rel="noopener noreferrer" className="text-xs">Manouk van Draanen</a></h6>
+      <footer className="bottom-0 w-full h-12 border-t border-primary flex items-center justify-center">
+        <h6>Website door <a href="https://www.manoukvandraanen.com" target="_blank" rel="noopener noreferrer" className="text-xs">Manouk van Draanen</a></h6>
       </footer>
     </div>
   );

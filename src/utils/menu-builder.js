@@ -17,6 +17,7 @@ async function buildMenu () {
             // Create sub menu item
             submenu.push({
                 id: subPage.id,
+                uid: subPage.uid,
                 url: `${mainPage.url}${subPage.url}`,
                 label: subPage.data.title[0].text
             });
@@ -25,6 +26,7 @@ async function buildMenu () {
         // Create main menu item
         menu.push({
             id: mainPage.id,
+            uid: mainPage.uid,
             url: mainPage.url,
             label: mainPage.data.title[0].text,
             submenu: submenu

@@ -13,7 +13,6 @@ const SocialBar = () => {
         const fetchMenu = async () => {
             try {
                 const socialData = await buildSocial();
-                console.log('Fetched social items:', socialData);
                 setsocialItems(socialData);
             } catch (error) {
                 console.error('Error fetching menu:', error);
@@ -22,10 +21,6 @@ const SocialBar = () => {
 
         fetchMenu();
     }, []);
-
-    useEffect(() => {
-        console.log('socialItems:', socialItems);
-    }, [socialItems]);
 
     return (
         <div className="social-bar flex items-center gap-4">

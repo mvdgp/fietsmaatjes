@@ -13,13 +13,13 @@ export default function RootLayout({ children }) {
           fixed top-0 left-0 w-full h-16 px-4
           bg-primary flex items-center justify-between
         `}>
-          <NavigationMenu menu={'test'} />
+          <NavigationMenu />
           <div className="flex items-center gap-4">
             <SocialBar />
             <SearchBar />
           </div>
         </header>
-        <main className="flex-grow mt-16" style={{ minHeight: 'calc(100vh - 4rem)' }}>
+        <main className="flex-grow mt-16">
           {children}
           <PrismicPreview repositoryName={repositoryName} />
         </main>

@@ -1,5 +1,31 @@
 import { createClient } from '../prismicio';
 
+async function renderContent(documentIdentifier) {
+  const client = createClient();
+
+  try {
+    // Try to fetch by ID first
+    const documentById = await client.getByID(documentIdentifier);
+    if (documentById) {
+      return documentById;
+    }
+  } catch (error) {
+    console.warn('Fetching by ID failed, trying by UID:', error);
+  }
+
+  try {
+    // Try to fetch by UID if fetching by ID fails
+    const documentByUid = await client.getByUID('page', documentIdentifier);
+    if (documentByUid) {
+      return documentByUid;
+    }
+  } catch (error) {
+    console.error('Fetching by UID failed:', error);
+  }
+
+  throw new Error('No documents were returned');
+}
+
 async function fetchMainPageContent() {
 
     try {
@@ -47,4 +73,4 @@ async function fetchSocialContent() {
     }
   }
 
-  export { fetchMainPageContent, fetchSubPageContent, fetchSocialContent };
+  export { fetchMainPageContent, fetchSubPageContent, fetchSocialContent, renderContent };

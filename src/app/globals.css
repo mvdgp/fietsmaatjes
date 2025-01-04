@@ -2,20 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  body {
+    @apply font-sans;
+    @apply font-fm-font;
+  }
+  h1 {
+    @apply text-3xl font-bold uppercase text-primary;
+  }
+  h2 {
+    @apply text-2xl font-semibold text-primary;
+  }
+  h3 {
+    @apply text-xl font-medium text-primary;
+  }
+  h4 {
+    @apply text-lg font-medium text-primary;
+  }
+  h5 {
+    @apply text-base font-medium text-primary;
+  }
+  h6 {
+    @apply text-xs;
+  }
+  p {
+    @apply text-sm;
+  }
+  a {
+    @apply text-sm text-primary hover:underline transition ease-in-out;
+  }
+  li::marker {
+    @apply text-primary;
+  }
+  ul {
+    @apply list-disc list-inside text-primary;
+  }
+  ol {
+    @apply list-decimal list-inside text-primary;
+  }
+  button {
+    /* Text styles */
+    @apply text-primary font-bold text-xs;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Border styles */
+    @apply border border-primary rounded;
+
+    /* Padding */
+    @apply px-4 py-1;
+
+    /* Hover styles */
+    @apply hover:bg-primary hover:text-tertiary transition ease-in-out;
+  }
+  .button-small {
+    @apply text-xs px-2 py-1;
+  }
+  .button-large {
+    @apply text-lg px-6 py-3;
+  }
+  svg {
+    @apply fill-white w-6 h-6;
+    @apply hover:fill-secondary transition ease-in-out;
+  }
+  input {
+    @apply rounded text-xs text-white;
+    @apply px-2 py-2;
+    @apply bg-primary border border-white focus:outline-secondary;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+
+/* Global styles */
+
+* {
+  box-sizing: border-box;
+  -ms-overflow-style: none;  /* Hide scrollbar : Internet Explorer 10+ */
+  scrollbar-width: none;  /* Hide scrollbar : Firefox */
+}
+
+
+::-webkit-scrollbar {
+  display: none; /* Hide scrollbar : Chrome, Safari, and Opera */
 }

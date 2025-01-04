@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const tailwindConfig = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,10 +8,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'primary': '#20408D',
+        'secondary': '#97C8E7',
+        'tertiary': '#FFEC00',
+        'quaternary': '#F5F5F5',
+        'fm-tertiary': '#FFEC00', //Because of a hard bug in Tailwind not applying to #Submenu.jsx
+      },
+      fontFamily: {
+        'fm-font': ['Inter', 'sans-serif'],
       },
     },
   },
   plugins: [],
 };
+
+export default tailwindConfig;

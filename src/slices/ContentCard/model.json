@@ -1,0 +1,110 @@
+{
+  "id": "contentcard",
+  "type": "SharedSlice",
+  "name": "ContentCard",
+  "description": "Contentcard",
+  "variations": [
+    {
+      "id": "default",
+      "name": "InfoCard",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "icon": {
+          "type": "Text",
+          "config": {
+            "label": "Icon",
+            "placeholder": "Icon"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titel",
+            "placeholder": "Titel",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Inhoud",
+            "placeholder": "Inhoud",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Hyperlink",
+            "placeholder": "Hyperlink",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "newsCard",
+      "name": "NewsCard",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Foto",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "date": {
+          "type": "Date",
+          "config": {
+            "label": "Datum",
+            "placeholder": "Datum"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titel",
+            "placeholder": "Titel",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Inhoud",
+            "placeholder": "Inhoud",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Hyperlink",
+            "placeholder": "Hyperlink",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

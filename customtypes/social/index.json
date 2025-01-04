@@ -1,0 +1,40 @@
+{
+  "format": "custom",
+  "id": "social",
+  "label": "Social",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "social_item": {
+        "type": "Group",
+        "config": {
+          "label": "Social Media Bron",
+          "repeat": true,
+          "fields": {
+            "icon": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Icon SVG",
+                "placeholder": "Plaats de <svg></svg> inhoud voor een icon",
+                "allowTargetBlank": false,
+                "single": "embed"
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "Social media website url",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": false,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

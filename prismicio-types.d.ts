@@ -222,52 +222,67 @@ export type AllDocumentTypes =
   | SocialDocument;
 
 /**
- * Primary content in *ContentCard → InfoCard → Primary*
+ * Item in *ContentCard → InfoCards → Primary → Card*
  */
-export interface ContentcardSliceDefaultPrimary {
+export interface ContentcardSliceDefaultPrimaryCardItem {
   /**
-   * Icon field in *ContentCard → InfoCard → Primary*
+   * Icon field in *ContentCard → InfoCards → Primary → Card*
    *
    * - **Field Type**: Text
    * - **Placeholder**: Icon
-   * - **API ID Path**: contentcard.default.primary.icon
+   * - **API ID Path**: contentcard.default.primary.card[].icon
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   icon: prismic.KeyTextField;
 
   /**
-   * Titel field in *ContentCard → InfoCard → Primary*
+   * Titel field in *ContentCard → InfoCards → Primary → Card*
    *
    * - **Field Type**: Title
    * - **Placeholder**: Titel
-   * - **API ID Path**: contentcard.default.primary.title
+   * - **API ID Path**: contentcard.default.primary.card[].title
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.TitleField;
 
   /**
-   * Inhoud field in *ContentCard → InfoCard → Primary*
+   * Inhoud field in *ContentCard → InfoCards → Primary → Card*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: Inhoud
-   * - **API ID Path**: contentcard.default.primary.body
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **API ID Path**: contentcard.default.primary.card[].body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  body: prismic.RichTextField;
+  body: prismic.KeyTextField;
 
   /**
-   * Hyperlink field in *ContentCard → InfoCard → Primary*
+   * Hyperlink field in *ContentCard → InfoCards → Primary → Card*
    *
    * - **Field Type**: Link
    * - **Placeholder**: Hyperlink
-   * - **API ID Path**: contentcard.default.primary.link
+   * - **API ID Path**: contentcard.default.primary.card[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
 }
 
 /**
- * InfoCard variation for ContentCard Slice
+ * Primary content in *ContentCard → InfoCards → Primary*
+ */
+export interface ContentcardSliceDefaultPrimary {
+  /**
+   * Card field in *ContentCard → InfoCards → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contentcard.default.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<ContentcardSliceDefaultPrimaryCardItem>>;
+}
+
+/**
+ * InfoCards variation for ContentCard Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -280,11 +295,11 @@ export type ContentcardSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *ContentCard → NewsCard → Primary*
+ * Primary content in *ContentCard → NewsCards → Primary*
  */
 export interface ContentcardSliceNewsCardPrimary {
   /**
-   * Foto field in *ContentCard → NewsCard → Primary*
+   * Foto field in *ContentCard → NewsCards → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -294,7 +309,7 @@ export interface ContentcardSliceNewsCardPrimary {
   image: prismic.ImageField<never>;
 
   /**
-   * Datum field in *ContentCard → NewsCard → Primary*
+   * Datum field in *ContentCard → NewsCards → Primary*
    *
    * - **Field Type**: Date
    * - **Placeholder**: Datum
@@ -304,7 +319,7 @@ export interface ContentcardSliceNewsCardPrimary {
   date: prismic.DateField;
 
   /**
-   * Titel field in *ContentCard → NewsCard → Primary*
+   * Titel field in *ContentCard → NewsCards → Primary*
    *
    * - **Field Type**: Title
    * - **Placeholder**: Titel
@@ -314,7 +329,7 @@ export interface ContentcardSliceNewsCardPrimary {
   title: prismic.TitleField;
 
   /**
-   * Inhoud field in *ContentCard → NewsCard → Primary*
+   * Inhoud field in *ContentCard → NewsCards → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: Inhoud
@@ -324,7 +339,7 @@ export interface ContentcardSliceNewsCardPrimary {
   body: prismic.RichTextField;
 
   /**
-   * Hyperlink field in *ContentCard → NewsCard → Primary*
+   * Hyperlink field in *ContentCard → NewsCards → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: Hyperlink
@@ -335,7 +350,7 @@ export interface ContentcardSliceNewsCardPrimary {
 }
 
 /**
- * NewsCard variation for ContentCard Slice
+ * NewsCards variation for ContentCard Slice
  *
  * - **API ID**: `newsCard`
  * - **Description**: Default
@@ -401,6 +416,7 @@ declare module "@prismicio/client" {
       SocialDocumentDataSocialItemItem,
       AllDocumentTypes,
       ContentcardSlice,
+      ContentcardSliceDefaultPrimaryCardItem,
       ContentcardSliceDefaultPrimary,
       ContentcardSliceNewsCardPrimary,
       ContentcardSliceVariation,

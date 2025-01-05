@@ -3,42 +3,57 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"title": {
-				"__TYPE__": "StructuredTextContent",
+			"card": {
+				"__TYPE__": "GroupContentType",
 				"value": [
 					{
-						"type": "heading2",
-						"content": {
-							"text": "Strike"
-						}
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"icon",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "regular",
+									"type": "Text"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading2",
+											"content": {
+												"text": "Window"
+											}
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "piano",
+									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"key": "5023720c-5d76-4458-bd1f-6bd88d4fbfcc",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com",
+										"text": "star"
+									}
+								}
+							]
+						]
 					}
 				]
-			},
-			"body": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Nostrud elit ex fugiat enim consequat duis."
-						}
-					}
-				]
-			},
-			"link": {
-				"key": "8d4c15bd-38c7-44be-8ad3-6b44a833f121",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "www.fietsmaatjes.nl",
-					"target": "_blank",
-					"text": "game"
-				}
-			},
-			"icon": {
-				"__TYPE__": "FieldContent",
-				"value": "library",
-				"type": "Text"
 			}
 		},
 		"items": []

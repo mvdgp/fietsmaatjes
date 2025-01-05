@@ -3,10 +3,29 @@ import { createClient } from '../prismicio';
 async function renderContent(documentIdentifier) {
   const client = createClient();
 
+  async function fetchParentUid(parentId) {
+    try {
+      const parentDoc = await client.getByID(parentId);
+      return parentDoc?.uid || '';
+    } catch (error) {
+      console.error('Error fetching parent UID:', error);
+      return '';
+    }
+  }
+
+  async function constructFullUid(document) {
+    if (document.data.parent && document.data.parent.id) {
+      const parentUid = await fetchParentUid(document.data.parent.id);
+      return parentUid ? `${parentUid}/${document.uid}` : document.uid;
+    }
+    return document.uid;
+  }
+
   try {
     // Try to fetch by UID first
     const documentByUid = await client.getByUID('page', documentIdentifier);
     if (documentByUid) {
+      documentByUid.fullUid = await constructFullUid(documentByUid);
       return documentByUid;
     }
   } catch (error) {
@@ -14,17 +33,19 @@ async function renderContent(documentIdentifier) {
   }
 
   try {
-    // Try to fetch by ID if fetching by ID fails
+    // Try to fetch by ID if fetching by UID fails
     const documentById = await client.getByID(documentIdentifier);
     if (documentById) {
+      documentById.fullUid = await constructFullUid(documentById);
       return documentById;
     }
   } catch (error) {
-    console.error('Fetching by ID failed, trying by UID:', error);
+    console.error('Fetching by ID failed:', error);
   }
 
   throw new Error('No documents were returned');
 }
+
 
 async function fetchMainPageContent() {
 

@@ -2,6 +2,7 @@
 const tailwindConfig = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -13,7 +14,6 @@ const tailwindConfig = {
         'tertiary': '#FFEC00',
         'quaternary': '#F5F5F5',
         'quinary': '#FFEC00', // To circumvent bug class not applying in NavigationMenu & SubMenu
-        
       },
       fontFamily: {
         'fm-font': ['Inter', 'sans-serif'],

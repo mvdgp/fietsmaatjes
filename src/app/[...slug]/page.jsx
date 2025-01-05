@@ -1,12 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { renderContent } from '@/utils/prismic-fetcher';
 import NotFound from '@/components/404';
+import { SliceZone } from '@prismicio/react';
+import { components } from '@/slices';
 
 const Page = () => {
     const path = usePathname();
+    const router = useRouter();
+
     let slug = 'home';
     if (path !== '/') slug = path.split('/').pop();
 
@@ -16,7 +20,13 @@ const Page = () => {
     useEffect(() => {
         const fetchContent = async () => {
             try {
+                
+                // Subpages are always redirected to their full UID
                 const response = await renderContent(slug);
+                if (response.uid !== response.fullUid) {
+                    router.replace(`/${response.fullUid}`);
+                }
+
                 setContent(response);
                 setError(false); // Reset error state if content is fetched successfully
             } catch (error) {
@@ -36,10 +46,8 @@ const Page = () => {
         <div className="h-full flex flex-col">
             <main className="flex-grow overflow-auto break-words whitespace-normal">
                 {content && (
-                    <div>
-                        <h2>{content.data.title[0].text}</h2>
-                        <p>{JSON.stringify(content)}</p>
-                        <div dangerouslySetInnerHTML={{ __html: content.data.content }} />
+                    <div className="flex flex-row">
+                        <SliceZone slices={content.data.slices} components={components} />
                     </div>
                 )}
             </main>

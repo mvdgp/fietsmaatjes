@@ -6,46 +6,53 @@
   "variations": [
     {
       "id": "default",
-      "name": "InfoCard",
+      "name": "InfoCards",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "icon": {
-          "type": "Text",
+        "card": {
+          "type": "Group",
           "config": {
-            "label": "Icon",
-            "placeholder": "Icon"
-          }
-        },
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Titel",
-            "placeholder": "Titel",
-            "allowTargetBlank": false,
-            "single": "heading2"
-          }
-        },
-        "body": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Inhoud",
-            "placeholder": "Inhoud",
-            "allowTargetBlank": false,
-            "multi": "paragraph"
-          }
-        },
-        "link": {
-          "type": "Link",
-          "config": {
-            "label": "Hyperlink",
-            "placeholder": "Hyperlink",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": false
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "Icon"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Titel",
+                  "placeholder": "Titel",
+                  "allowTargetBlank": false,
+                  "single": "heading2"
+                }
+              },
+              "body": {
+                "type": "Text",
+                "config": {
+                  "label": "Inhoud",
+                  "placeholder": "Inhoud"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Hyperlink",
+                  "placeholder": "Hyperlink",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
           }
         }
       },
@@ -53,7 +60,7 @@
     },
     {
       "id": "newsCard",
-      "name": "NewsCard",
+      "name": "NewsCards",
       "docURL": "...",
       "version": "initial",
       "description": "Default",

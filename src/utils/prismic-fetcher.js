@@ -4,23 +4,23 @@ async function renderContent(documentIdentifier) {
   const client = createClient();
 
   try {
-    // Try to fetch by ID first
-    const documentById = await client.getByID(documentIdentifier);
-    if (documentById) {
-      return documentById;
-    }
-  } catch (error) {
-    console.warn('Fetching by ID failed, trying by UID:', error);
-  }
-
-  try {
-    // Try to fetch by UID if fetching by ID fails
+    // Try to fetch by UID first
     const documentByUid = await client.getByUID('page', documentIdentifier);
     if (documentByUid) {
       return documentByUid;
     }
   } catch (error) {
     console.error('Fetching by UID failed:', error);
+  }
+
+  try {
+    // Try to fetch by ID if fetching by ID fails
+    const documentById = await client.getByID(documentIdentifier);
+    if (documentById) {
+      return documentById;
+    }
+  } catch (error) {
+    console.warn('Fetching by ID failed, trying by UID:', error);
   }
 
   throw new Error('No documents were returned');

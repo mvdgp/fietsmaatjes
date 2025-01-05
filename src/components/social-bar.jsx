@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { buildSocial } from '@/utils/menu-builder';
 import { ReactSVG } from 'react-svg';
+import { linkResolver } from '@/utils/helpers';
 
 const SocialBar = () => {
 
@@ -25,7 +26,7 @@ const SocialBar = () => {
     return (
         <div className="social-bar flex items-center gap-4">
             {socialItems.map((item, index) => (
-                <a key={`${item.link.url}-${index}`} href={item.link.url} target="_blank" rel="noopener noreferrer">
+                <a key={`${linkResolver(item.link)}-${index}`} href={item.link.url} target={item.link.target} rel="noopener noreferrer">
                     <ReactSVG src={`data:image/svg+xml;base64,${btoa(item.icon[0].text)}`} className="svg-container" />
                 </a>
             ))}

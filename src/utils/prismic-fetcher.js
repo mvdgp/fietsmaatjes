@@ -20,7 +20,7 @@ async function renderContent(documentIdentifier) {
       return documentById;
     }
   } catch (error) {
-    console.warn('Fetching by ID failed, trying by UID:', error);
+    console.error('Fetching by ID failed, trying by UID:', error);
   }
 
   throw new Error('No documents were returned');

@@ -66,12 +66,12 @@ const InfoCardsItem = ({ item, variation }) => {
             }}
           />
         ) : (
-          <p className="text-primary group-hover:text-white text-justify">{item.body}</p>
+          <p className="text-primary group-hover:text-white text-center">{item.body}</p>
         )
       ) : (
-        <p className="text-primary group-hover:text-white text-justify">{item.body}</p>
+        <p className="text-primary group-hover:text-white text-center">{item.body}</p>
       )}
-      <PrismicNextLink field={item.link} className="mt-auto text-xs font-bold group-hover:text-tertiary no-underline" />
+      <PrismicNextLink field={item.link} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline" />
       {variation === "infoCardsExpandable" && (
         <a onClick={toggleExpanded} className="cursor-pointer mt-2 text-xs font-bold group-hover:text-tertiary hover:no-underline">
           {expanded ? "Terug" : "Lees meer"}

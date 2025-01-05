@@ -22,8 +22,16 @@
                 "type": "Image",
                 "config": {
                   "label": "Foto",
-                  "constraint": {},
-                  "thumbnails": []
+                  "constraint": {
+                    "width": 250
+                  },
+                  "thumbnails": [
+                    {
+                      "name": "md",
+                      "width": 350,
+                      "height": null
+                    }
+                  ]
                 }
               },
               "date": {
@@ -84,8 +92,23 @@
                 "type": "Image",
                 "config": {
                   "label": "Foto",
-                  "constraint": {},
-                  "thumbnails": []
+                  "constraint": {
+                    "width": 250
+                  },
+                  "thumbnails": [
+                    {
+                      "name": "md",
+                      "width": 350,
+                      "height": null
+                    }
+                  ]
+                }
+              },
+              "date": {
+                "type": "Date",
+                "config": {
+                  "label": "Datum",
+                  "placeholder": "Datum"
                 }
               },
               "title": {
@@ -124,6 +147,14 @@
             "label": "Card",
             "repeat": true,
             "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Foto",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
               "title": {
                 "type": "StructuredText",
                 "config": {
@@ -133,13 +164,6 @@
                   "single": "heading2"
                 }
               },
-              "body": {
-                "type": "Text",
-                "config": {
-                  "label": "Inhoud",
-                  "placeholder": "Inhoud"
-                }
-              },
               "subtitle": {
                 "type": "StructuredText",
                 "config": {
@@ -147,6 +171,13 @@
                   "placeholder": "Subtitel",
                   "allowTargetBlank": false,
                   "single": "heading4"
+                }
+              },
+              "body": {
+                "type": "Text",
+                "config": {
+                  "label": "Inhoud",
+                  "placeholder": "Inhoud"
                 }
               }
             }

@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = ContentcardSlice;
+type PageDocumentDataSlicesSlice = ContentCardsSlice | ContentcardSlice;
 
 /**
  * Content for Pagina documents
@@ -233,7 +233,7 @@ export interface ContentCardsSliceDefaultPrimaryCardItem {
    * - **API ID Path**: content_cards.default.primary.card[].image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<never>;
+  image: prismic.ImageField<"md">;
 
   /**
    * Datum field in *ContentCards → NewsCards → Primary → Card*
@@ -288,7 +288,17 @@ export interface ContentCardsSliceGuestCardsPrimaryCardItem {
    * - **API ID Path**: content_cards.guestCards.primary.card[].image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<never>;
+  image: prismic.ImageField<"md">;
+
+  /**
+   * Datum field in *ContentCards → GuestCards → Primary → Card*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: Datum
+   * - **API ID Path**: content_cards.guestCards.primary.card[].date
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date: prismic.DateField;
 
   /**
    * Titel field in *ContentCards → GuestCards → Primary → Card*
@@ -316,6 +326,16 @@ export interface ContentCardsSliceGuestCardsPrimaryCardItem {
  */
 export interface ContentCardsSliceRoleCardsPrimaryCardItem {
   /**
+   * Foto field in *ContentCards → RoleCards → Primary → Card*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.roleCards.primary.card[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
    * Titel field in *ContentCards → RoleCards → Primary → Card*
    *
    * - **Field Type**: Title
@@ -326,16 +346,6 @@ export interface ContentCardsSliceRoleCardsPrimaryCardItem {
   title: prismic.TitleField;
 
   /**
-   * Inhoud field in *ContentCards → RoleCards → Primary → Card*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Inhoud
-   * - **API ID Path**: content_cards.roleCards.primary.card[].body
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  body: prismic.KeyTextField;
-
-  /**
    * Subtitel field in *ContentCards → RoleCards → Primary → Card*
    *
    * - **Field Type**: Title
@@ -344,6 +354,16 @@ export interface ContentCardsSliceRoleCardsPrimaryCardItem {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   subtitle: prismic.TitleField;
+
+  /**
+   * Inhoud field in *ContentCards → RoleCards → Primary → Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: content_cards.roleCards.primary.card[].body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
 }
 
 /**

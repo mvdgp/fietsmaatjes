@@ -3,5 +3,6 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  contentcard: dynamic(() => import("./ContentCard")),
+  content_cards: dynamic(() => import("./ContentCards")),
+  contentcard: dynamic(() => import("./InfoCards")),
 };

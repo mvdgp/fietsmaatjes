@@ -1,7 +1,7 @@
 {
   "id": "contentcard",
   "type": "SharedSlice",
-  "name": "ContentCard",
+  "name": "InfoCards",
   "description": "Contentcard",
   "variations": [
     {
@@ -59,55 +59,45 @@
       "items": {}
     },
     {
-      "id": "newsCard",
-      "name": "NewsCards",
+      "id": "infoCardsExpandable",
+      "name": "InfoCardsExpandable",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "image": {
-          "type": "Image",
+        "card": {
+          "type": "Group",
           "config": {
-            "label": "Foto",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "date": {
-          "type": "Date",
-          "config": {
-            "label": "Datum",
-            "placeholder": "Datum"
-          }
-        },
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Titel",
-            "placeholder": "Titel",
-            "allowTargetBlank": false,
-            "single": "heading2"
-          }
-        },
-        "body": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Inhoud",
-            "placeholder": "Inhoud",
-            "allowTargetBlank": false,
-            "multi": "paragraph"
-          }
-        },
-        "link": {
-          "type": "Link",
-          "config": {
-            "label": "Hyperlink",
-            "placeholder": "Hyperlink",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": false
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Titel",
+                  "placeholder": "Titel",
+                  "allowTargetBlank": false,
+                  "single": "heading2"
+                }
+              },
+              "body": {
+                "type": "Text",
+                "config": {
+                  "label": "Inhoud",
+                  "placeholder": "Inhoud"
+                }
+              },
+              "body_expanded": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Inhoud (uitgeklapt)",
+                  "placeholder": "Inhoud (uitgeklapt)",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item"
+                }
+              }
+            }
           }
         }
       },

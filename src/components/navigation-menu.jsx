@@ -76,8 +76,8 @@ const NavigationMenu = ({ menuItems }) => {
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-6 h-6"
+            stroke="white"
+            className="w-8 h-8"
           >
             <path
               strokeLinecap="round"
@@ -99,7 +99,7 @@ const NavigationMenu = ({ menuItems }) => {
           >
             <a
               href={item.url}
-              className={`font-bold text-base text-white hover:text-secondary hover:no-underline ${pathName.includes(item.uid) ? 'text-quinary' : ''}`}
+              className={`font-bold text-base text-white hover:text-secondary hover:no-underline ${pathName.includes(item.uid) ? 'text-tertiary' : ''}`}
               onClick={handleMenuItemClick}
             >
               {item.label}

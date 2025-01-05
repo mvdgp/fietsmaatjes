@@ -1,0 +1,289 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Date",
+									"value": "2021-02-05"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading2",
+											"content": {
+												"text": "Customs"
+											}
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "swam",
+									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"key": "f1ec5341-6e4f-46b3-a54c-fe31a4d11acb",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com",
+										"text": "sentence"
+									}
+								}
+							],
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+										"width": 3212,
+										"height": 3880
+									},
+									"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?rect=0%2C0%2C3212%2C3880&w=250&h=302",
+									"width": 250,
+									"height": 302,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {
+										"md": {
+											"origin": {
+												"id": "md",
+												"url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+												"width": 3168,
+												"height": 4752
+											},
+											"url": "https://images.unsplash.com/photo-1589321599763-d66926c29613?rect=0%2C0%2C3168%2C4752&w=350&h=525",
+											"width": 350,
+											"height": 525,
+											"edit": {
+												"zoom": 1,
+												"crop": {
+													"x": 0,
+													"y": 0
+												},
+												"background": "transparent"
+											},
+											"credits": null,
+											"alt": null
+										}
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "guestCards",
+		"primary": {
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"__TYPE__": "ImageContent",
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+										"width": 4016,
+										"height": 6016
+									},
+									"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482?rect=3%2C0%2C4011%2C6016&w=250&h=375",
+									"width": 250,
+									"height": 375,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 3,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"thumbnails": {
+										"md": {
+											"origin": {
+												"id": "md",
+												"url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+												"width": 4272,
+												"height": 2848
+											},
+											"url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?rect=0%2C2%2C4272%2C2844&w=350&h=233",
+											"width": 350,
+											"height": 233,
+											"edit": {
+												"zoom": 1,
+												"crop": {
+													"x": 0,
+													"y": 2
+												},
+												"background": "transparent"
+											}
+										}
+									}
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading2",
+											"content": {
+												"text": "Frighten"
+											}
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "information",
+									"type": "Text"
+								}
+							],
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Date",
+									"value": "2017-09-10"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "roleCards",
+		"primary": {
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading2",
+											"content": {
+												"text": "Title"
+											}
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "safety",
+									"type": "Text"
+								}
+							],
+							[
+								"subtitle",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading4",
+											"content": {
+												"text": "Forty"
+											}
+										}
+									]
+								}
+							],
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+										"width": 6000,
+										"height": 4000
+									},
+									"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+									"width": 6000,
+									"height": 4000,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

@@ -105,18 +105,7 @@ type PostDocumentDataSlicesSlice = never;
  */
 interface PostDocumentData {
   /**
-   * Titel field in *Nieuwsbrief*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: Titel van het artikel
-   * - **API ID Path**: post.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * Slice Zone field in *Nieuwsbrief*
+   * `slices` field in *Nieuwsbrief*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -124,38 +113,7 @@ interface PostDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<PostDocumentDataSlicesSlice> /**
-   * Meta Title field in *Nieuwsbrief*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: post.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_title: prismic.KeyTextField;
-
-  /**
-   * Meta Description field in *Nieuwsbrief*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: post.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Nieuwsbrief*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: post.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
+  slices: prismic.SliceZone<PostDocumentDataSlicesSlice>;
 }
 
 /**
@@ -177,18 +135,7 @@ type RouteDocumentDataSlicesSlice = never;
  */
 interface RouteDocumentData {
   /**
-   * Titel field in *Fietsroute*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: Titel van de fietsroute
-   * - **API ID Path**: route.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * Slice Zone field in *Fietsroute*
+   * `slices` field in *Fietsroute*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -196,38 +143,7 @@ interface RouteDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<RouteDocumentDataSlicesSlice> /**
-   * Meta Title field in *Fietsroute*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: route.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_title: prismic.KeyTextField;
-
-  /**
-   * Meta Description field in *Fietsroute*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: route.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Fietsroute*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: route.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
+  slices: prismic.SliceZone<RouteDocumentDataSlicesSlice>;
 }
 
 /**

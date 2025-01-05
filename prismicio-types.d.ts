@@ -222,11 +222,242 @@ export type AllDocumentTypes =
   | SocialDocument;
 
 /**
- * Item in *ContentCard → InfoCards → Primary → Card*
+ * Item in *ContentCards → NewsCards → Primary → Card*
+ */
+export interface ContentCardsSliceDefaultPrimaryCardItem {
+  /**
+   * Foto field in *ContentCards → NewsCards → Primary → Card*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.card[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Datum field in *ContentCards → NewsCards → Primary → Card*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: Datum
+   * - **API ID Path**: content_cards.default.primary.card[].date
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date: prismic.DateField;
+
+  /**
+   * Titel field in *ContentCards → NewsCards → Primary → Card*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Titel
+   * - **API ID Path**: content_cards.default.primary.card[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Inhoud field in *ContentCards → NewsCards → Primary → Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: content_cards.default.primary.card[].body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+
+  /**
+   * Hyperlink field in *ContentCards → NewsCards → Primary → Card*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Hyperlink
+   * - **API ID Path**: content_cards.default.primary.card[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *ContentCards → GuestCards → Primary → Card*
+ */
+export interface ContentCardsSliceGuestCardsPrimaryCardItem {
+  /**
+   * Foto field in *ContentCards → GuestCards → Primary → Card*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.guestCards.primary.card[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Titel field in *ContentCards → GuestCards → Primary → Card*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Titel
+   * - **API ID Path**: content_cards.guestCards.primary.card[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Inhoud field in *ContentCards → GuestCards → Primary → Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: content_cards.guestCards.primary.card[].body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+}
+
+/**
+ * Item in *ContentCards → RoleCards → Primary → Card*
+ */
+export interface ContentCardsSliceRoleCardsPrimaryCardItem {
+  /**
+   * Titel field in *ContentCards → RoleCards → Primary → Card*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Titel
+   * - **API ID Path**: content_cards.roleCards.primary.card[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Inhoud field in *ContentCards → RoleCards → Primary → Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: content_cards.roleCards.primary.card[].body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+
+  /**
+   * Subtitel field in *ContentCards → RoleCards → Primary → Card*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Subtitel
+   * - **API ID Path**: content_cards.roleCards.primary.card[].subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.TitleField;
+}
+
+/**
+ * Primary content in *ContentCards → NewsCards → Primary*
+ */
+export interface ContentCardsSliceDefaultPrimary {
+  /**
+   * Card field in *ContentCards → NewsCards → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<ContentCardsSliceDefaultPrimaryCardItem>>;
+}
+
+/**
+ * NewsCards variation for ContentCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentCardsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContentCardsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ContentCards → GuestCards → Primary*
+ */
+export interface ContentCardsSliceGuestCardsPrimary {
+  /**
+   * Card field in *ContentCards → GuestCards → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.guestCards.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<
+    Simplify<ContentCardsSliceGuestCardsPrimaryCardItem>
+  >;
+}
+
+/**
+ * GuestCards variation for ContentCards Slice
+ *
+ * - **API ID**: `guestCards`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentCardsSliceGuestCards = prismic.SharedSliceVariation<
+  "guestCards",
+  Simplify<ContentCardsSliceGuestCardsPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ContentCards → RoleCards → Primary*
+ */
+export interface ContentCardsSliceRoleCardsPrimary {
+  /**
+   * Card field in *ContentCards → RoleCards → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.roleCards.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<ContentCardsSliceRoleCardsPrimaryCardItem>>;
+}
+
+/**
+ * RoleCards variation for ContentCards Slice
+ *
+ * - **API ID**: `roleCards`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentCardsSliceRoleCards = prismic.SharedSliceVariation<
+  "roleCards",
+  Simplify<ContentCardsSliceRoleCardsPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContentCards*
+ */
+type ContentCardsSliceVariation =
+  | ContentCardsSliceDefault
+  | ContentCardsSliceGuestCards
+  | ContentCardsSliceRoleCards;
+
+/**
+ * ContentCards Shared Slice
+ *
+ * - **API ID**: `content_cards`
+ * - **Description**: ContentCards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentCardsSlice = prismic.SharedSlice<
+  "content_cards",
+  ContentCardsSliceVariation
+>;
+
+/**
+ * Item in *InfoCards → InfoCards → Primary → Card*
  */
 export interface ContentcardSliceDefaultPrimaryCardItem {
   /**
-   * Icon field in *ContentCard → InfoCards → Primary → Card*
+   * Icon field in *InfoCards → InfoCards → Primary → Card*
    *
    * - **Field Type**: Text
    * - **Placeholder**: Icon
@@ -236,7 +467,7 @@ export interface ContentcardSliceDefaultPrimaryCardItem {
   icon: prismic.KeyTextField;
 
   /**
-   * Titel field in *ContentCard → InfoCards → Primary → Card*
+   * Titel field in *InfoCards → InfoCards → Primary → Card*
    *
    * - **Field Type**: Title
    * - **Placeholder**: Titel
@@ -246,7 +477,7 @@ export interface ContentcardSliceDefaultPrimaryCardItem {
   title: prismic.TitleField;
 
   /**
-   * Inhoud field in *ContentCard → InfoCards → Primary → Card*
+   * Inhoud field in *InfoCards → InfoCards → Primary → Card*
    *
    * - **Field Type**: Text
    * - **Placeholder**: Inhoud
@@ -256,7 +487,7 @@ export interface ContentcardSliceDefaultPrimaryCardItem {
   body: prismic.KeyTextField;
 
   /**
-   * Hyperlink field in *ContentCard → InfoCards → Primary → Card*
+   * Hyperlink field in *InfoCards → InfoCards → Primary → Card*
    *
    * - **Field Type**: Link
    * - **Placeholder**: Hyperlink
@@ -267,11 +498,46 @@ export interface ContentcardSliceDefaultPrimaryCardItem {
 }
 
 /**
- * Primary content in *ContentCard → InfoCards → Primary*
+ * Item in *InfoCards → InfoCardsExpandable → Primary → Card*
+ */
+export interface ContentcardSliceInfoCardsExpandablePrimaryCardItem {
+  /**
+   * Titel field in *InfoCards → InfoCardsExpandable → Primary → Card*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Titel
+   * - **API ID Path**: contentcard.infoCardsExpandable.primary.card[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Inhoud field in *InfoCards → InfoCardsExpandable → Primary → Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: contentcard.infoCardsExpandable.primary.card[].body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+
+  /**
+   * Inhoud (uitgeklapt) field in *InfoCards → InfoCardsExpandable → Primary → Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inhoud (uitgeklapt)
+   * - **API ID Path**: contentcard.infoCardsExpandable.primary.card[].body_expanded
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_expanded: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *InfoCards → InfoCards → Primary*
  */
 export interface ContentcardSliceDefaultPrimary {
   /**
-   * Card field in *ContentCard → InfoCards → Primary*
+   * Card field in *InfoCards → InfoCards → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -282,7 +548,7 @@ export interface ContentcardSliceDefaultPrimary {
 }
 
 /**
- * InfoCards variation for ContentCard Slice
+ * InfoCards variation for InfoCards Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -295,82 +561,44 @@ export type ContentcardSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *ContentCard → NewsCards → Primary*
+ * Primary content in *InfoCards → InfoCardsExpandable → Primary*
  */
-export interface ContentcardSliceNewsCardPrimary {
+export interface ContentcardSliceInfoCardsExpandablePrimary {
   /**
-   * Foto field in *ContentCard → NewsCards → Primary*
+   * Card field in *InfoCards → InfoCardsExpandable → Primary*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: contentcard.newsCard.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **API ID Path**: contentcard.infoCardsExpandable.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Datum field in *ContentCard → NewsCards → Primary*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: Datum
-   * - **API ID Path**: contentcard.newsCard.primary.date
-   * - **Documentation**: https://prismic.io/docs/field#date
-   */
-  date: prismic.DateField;
-
-  /**
-   * Titel field in *ContentCard → NewsCards → Primary*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: Titel
-   * - **API ID Path**: contentcard.newsCard.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * Inhoud field in *ContentCard → NewsCards → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Inhoud
-   * - **API ID Path**: contentcard.newsCard.primary.body
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  body: prismic.RichTextField;
-
-  /**
-   * Hyperlink field in *ContentCard → NewsCards → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Hyperlink
-   * - **API ID Path**: contentcard.newsCard.primary.link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
+  card: prismic.GroupField<
+    Simplify<ContentcardSliceInfoCardsExpandablePrimaryCardItem>
+  >;
 }
 
 /**
- * NewsCards variation for ContentCard Slice
+ * InfoCardsExpandable variation for InfoCards Slice
  *
- * - **API ID**: `newsCard`
+ * - **API ID**: `infoCardsExpandable`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContentcardSliceNewsCard = prismic.SharedSliceVariation<
-  "newsCard",
-  Simplify<ContentcardSliceNewsCardPrimary>,
+export type ContentcardSliceInfoCardsExpandable = prismic.SharedSliceVariation<
+  "infoCardsExpandable",
+  Simplify<ContentcardSliceInfoCardsExpandablePrimary>,
   never
 >;
 
 /**
- * Slice variation for *ContentCard*
+ * Slice variation for *InfoCards*
  */
 type ContentcardSliceVariation =
   | ContentcardSliceDefault
-  | ContentcardSliceNewsCard;
+  | ContentcardSliceInfoCardsExpandable;
 
 /**
- * ContentCard Shared Slice
+ * InfoCards Shared Slice
  *
  * - **API ID**: `contentcard`
  * - **Description**: Contentcard
@@ -415,13 +643,25 @@ declare module "@prismicio/client" {
       SocialDocumentData,
       SocialDocumentDataSocialItemItem,
       AllDocumentTypes,
+      ContentCardsSlice,
+      ContentCardsSliceDefaultPrimaryCardItem,
+      ContentCardsSliceDefaultPrimary,
+      ContentCardsSliceGuestCardsPrimaryCardItem,
+      ContentCardsSliceGuestCardsPrimary,
+      ContentCardsSliceRoleCardsPrimaryCardItem,
+      ContentCardsSliceRoleCardsPrimary,
+      ContentCardsSliceVariation,
+      ContentCardsSliceDefault,
+      ContentCardsSliceGuestCards,
+      ContentCardsSliceRoleCards,
       ContentcardSlice,
       ContentcardSliceDefaultPrimaryCardItem,
       ContentcardSliceDefaultPrimary,
-      ContentcardSliceNewsCardPrimary,
+      ContentcardSliceInfoCardsExpandablePrimaryCardItem,
+      ContentcardSliceInfoCardsExpandablePrimary,
       ContentcardSliceVariation,
       ContentcardSliceDefault,
-      ContentcardSliceNewsCard,
+      ContentcardSliceInfoCardsExpandable,
     };
   }
 }

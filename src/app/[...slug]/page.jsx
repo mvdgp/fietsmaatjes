@@ -20,7 +20,6 @@ const Page = () => {
     useEffect(() => {
         const fetchContent = async () => {
             try {
-                
                 // Subpages are always redirected to their full UID
                 const response = await renderContent(slug);
                 if (response.uid !== response.fullUid) {
@@ -43,10 +42,10 @@ const Page = () => {
     }
 
     return (
-        <div className="h-full flex flex-col">
-            <main className="flex-grow overflow-auto break-words whitespace-normal">
+        <div className="h-full w-full flex flex-col">
+            <main className="flex-grow overflow-auto break-words whitespace-normal h-full w-full">
                 {content && (
-                    <div className="flex flex-row">
+                    <div className="flex flex-row flex-wrap items-center justify-center">
                         <SliceZone slices={content.data.slices} components={components} />
                     </div>
                 )}

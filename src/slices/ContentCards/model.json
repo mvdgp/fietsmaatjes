@@ -1,0 +1,159 @@
+{
+  "id": "content_cards",
+  "type": "SharedSlice",
+  "name": "ContentCards",
+  "description": "ContentCards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "NewsCards",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Foto",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "date": {
+                "type": "Date",
+                "config": {
+                  "label": "Datum",
+                  "placeholder": "Datum"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Titel",
+                  "placeholder": "Titel",
+                  "allowTargetBlank": false,
+                  "single": "heading2"
+                }
+              },
+              "body": {
+                "type": "Text",
+                "config": {
+                  "label": "Inhoud",
+                  "placeholder": "Inhoud"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Hyperlink",
+                  "placeholder": "Hyperlink",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "guestCards",
+      "name": "GuestCards",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Foto",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Titel",
+                  "placeholder": "Titel",
+                  "allowTargetBlank": false,
+                  "single": "heading2"
+                }
+              },
+              "body": {
+                "type": "Text",
+                "config": {
+                  "label": "Inhoud",
+                  "placeholder": "Inhoud"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "roleCards",
+      "name": "RoleCards",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Titel",
+                  "placeholder": "Titel",
+                  "allowTargetBlank": false,
+                  "single": "heading2"
+                }
+              },
+              "body": {
+                "type": "Text",
+                "config": {
+                  "label": "Inhoud",
+                  "placeholder": "Inhoud"
+                }
+              },
+              "subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Subtitel",
+                  "placeholder": "Subtitel",
+                  "allowTargetBlank": false,
+                  "single": "heading4"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

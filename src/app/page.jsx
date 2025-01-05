@@ -6,7 +6,7 @@ export default async function Home() {
   const page = await renderContent(pageId);
 
   return (
-    <div className="container h-full flex flex-col">
+    <div className="h-full flex flex-col">
       <main className="flex-grow overflow-auto break-words whitespace-normal">
         {page ? JSON.stringify(page) : 'De pagina kon niet geladen worden.'}
       </main>

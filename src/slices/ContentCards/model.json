@@ -165,12 +165,10 @@
                 }
               },
               "subtitle": {
-                "type": "StructuredText",
+                "type": "Text",
                 "config": {
                   "label": "Subtitel",
-                  "placeholder": "Subtitel",
-                  "allowTargetBlank": false,
-                  "single": "heading4"
+                  "placeholder": "Maximaal 28 karakters"
                 }
               },
               "body": {

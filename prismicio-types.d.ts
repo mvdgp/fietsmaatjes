@@ -348,12 +348,12 @@ export interface ContentCardsSliceRoleCardsPrimaryCardItem {
   /**
    * Subtitel field in *ContentCards → RoleCards → Primary → Card*
    *
-   * - **Field Type**: Title
-   * - **Placeholder**: Subtitel
+   * - **Field Type**: Text
+   * - **Placeholder**: Maximaal 28 karakters
    * - **API ID Path**: content_cards.roleCards.primary.card[].subtitle
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  subtitle: prismic.TitleField;
+  subtitle: prismic.KeyTextField;
 
   /**
    * Inhoud field in *ContentCards → RoleCards → Primary → Card*

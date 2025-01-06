@@ -14,7 +14,7 @@ export default async function RootLayout({ children }) {
       <body className="h-[100dvh] w-[100dvw] flex flex-col">
         <header className={`
           fixed top-0 left-0 w-full h-16 px-4
-          bg-primary flex items-center justify-between
+          bg-primary flex items-center justify-between z-10
         `}>
           <NavigationMenu menuItems={menuItems} />
           <div className="flex items-center gap-4">

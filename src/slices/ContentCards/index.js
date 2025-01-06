@@ -49,7 +49,7 @@ const ContentCardItem = ({ item }) => {
           }}
         />
         {item.subtitle ? (
-          <h6 className="group-hover:text-white text-primary font-semibold pb-[2px]">{item.subtitle.length > 28 ? `${item.subtitle.substring(0, 28)}` : item.subtitle}</h6>
+          <h6 className="group-hover:text-white text-primary font-semibold pb-1">{item.subtitle.length > 28 ? `${item.subtitle.substring(0, 28)}` : item.subtitle}</h6>
         ) : null}
         <h6 className="group-hover:text-white text-justify md:text-center text-primary hover:text-white">
           {item.body.length > 150 ? `${item.body.substring(0, 150)}...` : item.body}

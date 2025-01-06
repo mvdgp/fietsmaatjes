@@ -11,13 +11,22 @@ import { ReactSVG } from 'react-svg';
  * @param {InfoCardsProps}
  */
 const InfoCards = ({ slice }) => {
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
-  console.log(slice);
+  const toggleExpanded = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   return (
     <section className="flex flex-row flex-wrap items-center justify-center">
       {slice.primary.card.map((item, index) => (
-        <InfoCardsItem key={index} item={item} variation={slice.variation} />
+        <InfoCardsItem
+          key={index}
+          item={item}
+          variation={slice.variation}
+          isExpanded={expandedIndex === index}
+          toggleExpanded={() => toggleExpanded(index)}
+        />
       ))}
     </section>
   );
@@ -28,20 +37,14 @@ const InfoCards = ({ slice }) => {
  * @param {Object} props
  * @param {Object} props.item - The content card item data.
  * @param {string} props.variation - The variation of the slice.
+ * @param {boolean} props.isExpanded - Whether the item is expanded.
+ * @param {Function} props.toggleExpanded - Function to toggle the expanded state.
  */
-// ...existing code...
-
-const InfoCardsItem = ({ item, variation }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleExpanded = () => {
-    setExpanded(!expanded);
-  };
-
+const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
   return (
     <div
       className={`group flex flex-col p-4 border border-primary rounded hover:bg-primary flex-shrink-0 
-      ${expanded ? 'md:w-[500px] md:h-[300px] w-[320px] h-[500px]' : 'md:w-[200px] md:h-[300px] w-[320px] h-[200px]'}
+      ${isExpanded ? 'md:w-[500px] md:h-[300px] w-[320px] h-[500px]' : 'md:w-[200px] md:h-[300px] w-[320px] h-[200px]'}
       m-4 items-center text-center gap-1`}
     > 
       <ReactSVG
@@ -57,9 +60,8 @@ const InfoCardsItem = ({ item, variation }) => {
         }}
       />
       {variation === "infoCardsExpandable" ? (
-        expanded ? (
+        isExpanded ? (
           <PrismicRichText
-// ...existing code...
             field={item.body_expanded}
             components={{
               paragraph: ({ children }) => <p className="text-xs text-primary group-hover:text-white transition ease-in-out">{children}</p>,
@@ -74,7 +76,7 @@ const InfoCardsItem = ({ item, variation }) => {
       <PrismicNextLink field={item.link} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline" />
       {variation === "infoCardsExpandable" && (
         <a onClick={toggleExpanded} className="cursor-pointer mt-2 text-xs font-bold group-hover:text-tertiary hover:no-underline">
-          {expanded ? "Terug" : "Lees meer"}
+          {isExpanded ? "Terug" : "Lees meer"}
         </a>
       )}
     </div>

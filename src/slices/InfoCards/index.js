@@ -62,14 +62,14 @@ const InfoCardsItem = ({ item, variation }) => {
 // ...existing code...
             field={item.body_expanded}
             components={{
-              paragraph: ({ children }) => <p className="text-primary group-hover:text-white transition ease-in-out">{children}</p>,
+              paragraph: ({ children }) => <p className="text-xs text-primary group-hover:text-white transition ease-in-out">{children}</p>,
             }}
           />
         ) : (
-          <p className="text-primary group-hover:text-white text-center">{item.body}</p>
+          <h6 className="text-primary group-hover:text-white text-center">{item.body}</h6>
         )
       ) : (
-        <p className="text-primary group-hover:text-white text-center">{item.body}</p>
+        <h6 className="text-primary group-hover:text-white text-center">{item.body}</h6>
       )}
       <PrismicNextLink field={item.link} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline" />
       {variation === "infoCardsExpandable" && (

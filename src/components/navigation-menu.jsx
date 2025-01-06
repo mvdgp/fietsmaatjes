@@ -98,7 +98,7 @@ const NavigationMenu = ({ menuItems }) => {
             onMouseLeave={() => handleMouseLeave(item)}
           >
             <a
-              href={item.url} //temp
+              href={item.url}
               className={`font-bold text-base text-white hover:text-secondary hover:no-underline ${pathName.includes(item.uid) ? 'text-tertiary' : ''}`}
               onClick={handleMenuItemClick}
             >

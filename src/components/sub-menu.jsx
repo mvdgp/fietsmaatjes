@@ -10,7 +10,7 @@ const SubMenu = ({ menuItem }) => {
                 {menuItem.submenu.map((subItem) => (
                     <li key={subItem.id} className="list-none">
                         <a
-                            href={subItem.url} //temp
+                            href={subItem.url}
                             className={`text-sm text-white hover:text-secondary hover:no-underline ${pathName.includes(subItem.uid) ? 'text-tertiary' : ''}`}
                         >
                             {subItem.label}

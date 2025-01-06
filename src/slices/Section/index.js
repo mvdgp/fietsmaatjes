@@ -68,7 +68,7 @@ const Section = ({ slice }) => {
     );
   } else if (variation === "mirrored") {
     return (
-      <section className={`h-full w-full flex flex-col md:flex-row gap-10 py-10 px-8 md:px-36 ${bgColor === "lichtblauw" ? "bg-white" : "bg-secondary"}`}>
+      <section className={`h-full w-full flex flex-col md:flex-row gap-10 py-10 px-8 lg:px-36 ${bgColor === "lichtblauw" ? "bg-white" : "bg-secondary"}`}>
         <div className="p-4 md:w-[60dvw]">
           <PrismicRichText
             field={slice.primary.body}

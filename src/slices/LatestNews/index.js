@@ -36,7 +36,7 @@ const LatestNews = ({ slice }) => {
   return (
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className="mt-8 w-full p-4 text-center">
       <h1 className="mb-2 border-b pb-2 border-primary">Laatste nieuwsberichten</h1>
-      <div className="p-4 grid grid-cols-1 lg:grid-cols-3 justify-items-center gap-4">
+      <div className="p-4 grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 justify-items-center gap-4">
         {news.length > 0 ? (
           news.map((item, index) => {
             const formattedDate = dateResolver(item.first_publication_date.split('T')[0]);
@@ -70,9 +70,15 @@ const LatestNews = ({ slice }) => {
             );
           })
         ) : (
-          <p>No news available</p>
+          <p className="text-primary">Geen nieuws beschikbaar :( </p>
         )}
       </div>
+      <div className="flex flex-col w-full items-start p-4">
+        <p className="font-bold">Op de hoogte blijven?</p>
+        <p>Meld u aan voor onze <a href="https://www.fietsmaatjes.nl" target="_blank">nieuwsbrief</a>
+          !</p>
+      </div>
+      
     </section>
   );
 };

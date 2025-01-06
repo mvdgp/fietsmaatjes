@@ -42,6 +42,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "archive": {
+              "type": "SharedSlice"
+            },
             "latest_news": {
               "type": "SharedSlice"
             },

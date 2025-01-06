@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | ArchiveSlice
   | LatestNewsSlice
   | SectionSlice
   | ContentCardsSlice
@@ -172,7 +173,40 @@ type RouteDocumentDataSlicesSlice = never;
  */
 interface RouteDocumentData {
   /**
-   * `slices` field in *Fietsroute*
+   * Titel field in *Fietsroute*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titel
+   * - **API ID Path**: route.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Beschrijving field in *Fietsroute*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Korte beschrijving
+   * - **API ID Path**: route.body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+
+  /**
+   * Route field in *Fietsroute*
+   *
+   * - **Field Type**: GeoPoint
+   * - **Placeholder**: *None*
+   * - **API ID Path**: route.route
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   */
+  route: prismic.GeoPointField;
+
+  /**
+   * Slice Zone field in *Fietsroute*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -257,6 +291,99 @@ export type AllDocumentTypes =
   | PostDocument
   | RouteDocument
   | SocialDocument;
+
+/**
+ * Item in *Archive → Default → Primary → Fietsroute*
+ */
+export interface ArchiveSliceDefaultPrimaryItemItem {
+  /**
+   * Titel field in *Archive → Default → Primary → Fietsroute*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titel
+   * - **API ID Path**: archive.default.primary.item[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Beschrijving field in *Archive → Default → Primary → Fietsroute*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Korte beschrijving van de route.
+   * - **API ID Path**: archive.default.primary.item[].body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+
+  /**
+   * Route field in *Archive → Default → Primary → Fietsroute*
+   *
+   * - **Field Type**: GeoPoint
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive.default.primary.item[].route
+   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   */
+  route: prismic.GeoPointField;
+}
+
+/**
+ * Primary content in *Archive → Default → Primary*
+ */
+export interface ArchiveSliceDefaultPrimary {
+  /**
+   * Fietsroute field in *Archive → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive.default.primary.item[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  item: prismic.GroupField<Simplify<ArchiveSliceDefaultPrimaryItemItem>>;
+}
+
+/**
+ * Default variation for Archive Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArchiveSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ArchiveSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Automatic variation for Archive Slice
+ *
+ * - **API ID**: `automatic`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArchiveSliceAutomatic = prismic.SharedSliceVariation<
+  "automatic",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Archive*
+ */
+type ArchiveSliceVariation = ArchiveSliceDefault | ArchiveSliceAutomatic;
+
+/**
+ * Archive Shared Slice
+ *
+ * - **API ID**: `archive`
+ * - **Description**: Archive
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArchiveSlice = prismic.SharedSlice<
+  "archive",
+  ArchiveSliceVariation
+>;
 
 /**
  * Item in *ContentCards → NewsCards → Primary → Card*
@@ -965,6 +1092,12 @@ declare module "@prismicio/client" {
       SocialDocumentData,
       SocialDocumentDataSocialItemItem,
       AllDocumentTypes,
+      ArchiveSlice,
+      ArchiveSliceDefaultPrimaryItemItem,
+      ArchiveSliceDefaultPrimary,
+      ArchiveSliceVariation,
+      ArchiveSliceDefault,
+      ArchiveSliceAutomatic,
       ContentCardsSlice,
       ContentCardsSliceDefaultPrimaryCardItem,
       ContentCardsSliceDefaultPrimary,

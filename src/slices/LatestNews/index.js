@@ -65,7 +65,7 @@ const LatestNews = ({ slice }) => {
                 ))}
                 </div>
               )}
-              <a href={`/nieuws/${item.uid}`} className="group-hover:text-tertiary hover:no-underline font-bold text-xs mt-auto">Lees meer</a>
+              <a href={`/nieuws#${item.uid}`} className="group-hover:text-tertiary hover:no-underline font-bold text-xs mt-auto">Lees meer</a>
               </div>
             );
           })

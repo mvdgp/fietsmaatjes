@@ -12,9 +12,32 @@
           "label": "UID"
         }
       },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Titel",
+          "placeholder": "Titel"
+        }
+      },
+      "body": {
+        "type": "Text",
+        "config": {
+          "label": "Beschrijving",
+          "placeholder": "Korte beschrijving"
+        }
+      },
+      "route": {
+        "type": "GeoPoint",
+        "config": {
+          "label": "Route"
+        }
+      },
       "slices": {
         "type": "Slices",
-        "fieldset": "Slice Zone"
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
       }
     }
   }

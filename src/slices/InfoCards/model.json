@@ -99,6 +99,18 @@
               }
             }
           }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Achtergrond kleur",
+            "placeholder": "Kies een achtergrond kleur (niet voor de kaartjes, maar erachter)",
+            "options": [
+              "Wit",
+              "Lichtblauw"
+            ],
+            "default_value": "Wit"
+          }
         }
       },
       "items": {}

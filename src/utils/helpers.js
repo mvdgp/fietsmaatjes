@@ -5,9 +5,6 @@ async function linkResolver(linkObject) {
                 linkObject.url = 'http://' + linkObject.url;
             }
             break;
-        case 'Document':
-            // Handle Document link type
-            break;
         default:
             // Handle default case
             break;

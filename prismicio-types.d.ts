@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = ContentCardsSlice | ContentcardSlice;
+type PageDocumentDataSlicesSlice =
+  | SectionSlice
+  | ContentCardsSlice
+  | ContentcardSlice;
 
 /**
  * Content for Pagina documents
@@ -595,6 +598,17 @@ export interface ContentcardSliceInfoCardsExpandablePrimary {
   card: prismic.GroupField<
     Simplify<ContentcardSliceInfoCardsExpandablePrimaryCardItem>
   >;
+
+  /**
+   * Achtergrond kleur field in *InfoCards → InfoCardsExpandable → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Kies een achtergrond kleur (niet voor de kaartjes, maar erachter)
+   * - **Default Value**: Wit
+   * - **API ID Path**: contentcard.infoCardsExpandable.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_color: prismic.SelectField<"Wit" | "Lichtblauw", "filled">;
 }
 
 /**
@@ -627,6 +641,230 @@ type ContentcardSliceVariation =
 export type ContentcardSlice = prismic.SharedSlice<
   "contentcard",
   ContentcardSliceVariation
+>;
+
+/**
+ * Primary content in *Section → Default → Primary*
+ */
+export interface SectionSliceDefaultPrimary {
+  /**
+   * Foto field in *Section → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Inhoud field in *Section → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: section.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Achtergrond kleur field in *Section → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Kies een achtergrond kleur
+   * - **Default Value**: Wit
+   * - **API ID Path**: section.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_color: prismic.SelectField<"Wit" | "Lichtblauw", "filled">;
+}
+
+/**
+ * Default variation for Section Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Section → Vertical → Primary*
+ */
+export interface SectionSliceVerticalPrimary {
+  /**
+   * Foto field in *Section → Vertical → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section.vertical.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Inhoud field in *Section → Vertical → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: section.vertical.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Vertical variation for Section Slice
+ *
+ * - **API ID**: `vertical`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionSliceVertical = prismic.SharedSliceVariation<
+  "vertical",
+  Simplify<SectionSliceVerticalPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Section → Mirrored → Primary*
+ */
+export interface SectionSliceMirroredPrimary {
+  /**
+   * Foto field in *Section → Mirrored → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section.mirrored.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Inhoud field in *Section → Mirrored → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: section.mirrored.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Achtergrond kleur field in *Section → Mirrored → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Kies een achtergrond kleur
+   * - **Default Value**: Wit
+   * - **API ID Path**: section.mirrored.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_color: prismic.SelectField<"Wit" | "Lichtblauw", "filled">;
+}
+
+/**
+ * Mirrored variation for Section Slice
+ *
+ * - **API ID**: `mirrored`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionSliceMirrored = prismic.SharedSliceVariation<
+  "mirrored",
+  Simplify<SectionSliceMirroredPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Section → Stacked → Primary*
+ */
+export interface SectionSliceStackedPrimary {
+  /**
+   * Foto field in *Section → Stacked → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section.stacked.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Inhoud field in *Section → Stacked → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: section.stacked.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Stacked variation for Section Slice
+ *
+ * - **API ID**: `stacked`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionSliceStacked = prismic.SharedSliceVariation<
+  "stacked",
+  Simplify<SectionSliceStackedPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Section → NoImage → Primary*
+ */
+export interface SectionSliceNoImagePrimary {
+  /**
+   * Inhoud field in *Section → NoImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: section.noImage.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * NoImage variation for Section Slice
+ *
+ * - **API ID**: `noImage`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionSliceNoImage = prismic.SharedSliceVariation<
+  "noImage",
+  Simplify<SectionSliceNoImagePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Section*
+ */
+type SectionSliceVariation =
+  | SectionSliceDefault
+  | SectionSliceVertical
+  | SectionSliceMirrored
+  | SectionSliceStacked
+  | SectionSliceNoImage;
+
+/**
+ * Section Shared Slice
+ *
+ * - **API ID**: `section`
+ * - **Description**: Section
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionSlice = prismic.SharedSlice<
+  "section",
+  SectionSliceVariation
 >;
 
 declare module "@prismicio/client" {
@@ -682,6 +920,18 @@ declare module "@prismicio/client" {
       ContentcardSliceVariation,
       ContentcardSliceDefault,
       ContentcardSliceInfoCardsExpandable,
+      SectionSlice,
+      SectionSliceDefaultPrimary,
+      SectionSliceVerticalPrimary,
+      SectionSliceMirroredPrimary,
+      SectionSliceStackedPrimary,
+      SectionSliceNoImagePrimary,
+      SectionSliceVariation,
+      SectionSliceDefault,
+      SectionSliceVertical,
+      SectionSliceMirrored,
+      SectionSliceStacked,
+      SectionSliceNoImage,
     };
   }
 }

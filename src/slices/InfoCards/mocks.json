@@ -107,6 +107,11 @@
 						]
 					}
 				]
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "Wit",
+				"type": "Select"
 			}
 		},
 		"items": [

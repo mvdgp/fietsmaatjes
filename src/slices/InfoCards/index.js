@@ -18,7 +18,7 @@ const InfoCards = ({ slice }) => {
   };
 
   return (
-    <section className="flex flex-row flex-wrap items-center justify-center">
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 justify-items-center">
       {slice.primary.card.map((item, index) => (
         <InfoCardsItem
           key={index}
@@ -35,12 +35,13 @@ const InfoCards = ({ slice }) => {
 /**
  * Renders a single content card item.
  * @param {Object} props
- * @param {Object} props.item - The content card item data.
+ * @param {Object} props.item - The info card item data.
  * @param {string} props.variation - The variation of the slice.
  * @param {boolean} props.isExpanded - Whether the item is expanded.
  * @param {Function} props.toggleExpanded - Function to toggle the expanded state.
  */
 const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
+
   return (
     <div
       className={`group flex flex-col p-4 border border-primary rounded hover:bg-primary flex-shrink-0 
@@ -73,7 +74,13 @@ const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
       ) : (
         <h6 className="text-primary group-hover:text-white text-center">{item.body}</h6>
       )}
-      <PrismicNextLink field={item.link} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline" />
+      {item.link.link_type !== "Web" ? (
+        <PrismicNextLink field={item.link} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline" />
+      ) : (
+        <a href={'http://'+item.link.url} target={item.link.target} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline">
+          {item.link.text}
+        </a>
+      )}
       {variation === "infoCardsExpandable" && (
         <a onClick={toggleExpanded} className="cursor-pointer mt-2 text-xs font-bold group-hover:text-tertiary hover:no-underline">
           {isExpanded ? "Terug" : "Lees meer"}

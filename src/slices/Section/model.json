@@ -1,0 +1,164 @@
+{
+  "id": "section",
+  "type": "SharedSlice",
+  "name": "Section",
+  "description": "Section",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Foto",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Inhoud",
+            "placeholder": "Inhoud",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,rtl"
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Achtergrond kleur",
+            "placeholder": "Kies een achtergrond kleur",
+            "options": [
+              "Wit",
+              "Lichtblauw"
+            ],
+            "default_value": "Wit"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "vertical",
+      "name": "Vertical",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Foto",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Inhoud",
+            "placeholder": "Inhoud",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "mirrored",
+      "name": "Mirrored",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Foto",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Inhoud",
+            "placeholder": "Inhoud",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,rtl"
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Achtergrond kleur",
+            "placeholder": "Kies een achtergrond kleur",
+            "options": [
+              "Wit",
+              "Lichtblauw"
+            ],
+            "default_value": "Wit"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "stacked",
+      "name": "Stacked",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Foto",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Inhoud",
+            "placeholder": "Inhoud",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,heading3,strong"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "noImage",
+      "name": "NoImage",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Inhoud",
+            "placeholder": "Inhoud",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

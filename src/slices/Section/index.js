@@ -11,7 +11,6 @@ import { useEffect, useRef, useState } from 'react';
 const Section = ({ slice }) => {
   const variation = slice.variation;
   const bgColor = slice.primary.background_color;
-  console.log(bgColor);
   const imageRef = useRef(null);
   const [maxHeight, setMaxHeight] = useState('auto');
 
@@ -117,10 +116,11 @@ const Section = ({ slice }) => {
     );
   } else if (variation === "noImage") {
     return (
-      <div className="md:max-w-[60dvw] text-justify">
-        <PrismicRichText field={slice.primary.body} />
+      <div className="px-8 py-2 md:px-52 flex flex-col w-full text-justify items-center">
+        <div>
+          <PrismicRichText field={slice.primary.body} />
+        </div>
       </div>
-
     );
   } else {
     return (

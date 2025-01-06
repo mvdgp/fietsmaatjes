@@ -11,8 +11,6 @@ import { dateResolver } from '@/utils/helpers';
  */
 const Contentcards = ({ slice }) => {
 
-  console.log(slice);
-
   return (
     <section className="flex flex-row flex-wrap">
       {slice.primary.card.map((item, index) => (

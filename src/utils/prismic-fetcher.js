@@ -94,4 +94,36 @@ async function fetchSocialContent() {
     }
   }
 
-  export { fetchMainPageContent, fetchSubPageContent, fetchSocialContent, renderContent };
+  async function fetchNewsContent(latest) {
+    try {
+      const client = createClient();
+      const response = await client.getByType('post');
+      const sortedResults = response.results
+        .sort((a, b) => new Date(b.first_publication_date) - new Date(a.first_publication_date));
+
+      if (latest) {
+        return sortedResults.filter((_, index) => index < 3);
+      }
+
+      return sortedResults;
+    } catch (error) {
+      console.error('Error fetching news content from Prismic:', error);
+      throw error;
+    }
+  }
+
+  async function fetchRoutesContent() {
+
+    try {
+      const client = createClient();
+      const response = await client.getByType('route');
+
+      return response.results;
+
+    } catch (error) {
+      console.error('Error fetching news content from Prismic:', error);
+      throw error;
+    }
+  }
+
+  export { fetchMainPageContent, fetchSubPageContent, fetchSocialContent, renderContent, fetchNewsContent, fetchRoutesContent };

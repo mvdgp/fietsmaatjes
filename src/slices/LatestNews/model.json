@@ -1,0 +1,16 @@
+{
+  "id": "latest_news",
+  "type": "SharedSlice",
+  "name": "LatestNews",
+  "description": "LatestNews",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

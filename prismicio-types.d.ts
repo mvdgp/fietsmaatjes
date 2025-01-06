@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | LatestNewsSlice
   | SectionSlice
   | ContentCardsSlice
   | ContentcardSlice;
@@ -108,7 +109,40 @@ type PostDocumentDataSlicesSlice = never;
  */
 interface PostDocumentData {
   /**
-   * `slices` field in *Nieuwsbrief*
+   * Foto field in *Nieuwsbrief*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Titel field in *Nieuwsbrief*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Titel
+   * - **API ID Path**: post.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Inhoud field in *Nieuwsbrief*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Inhoud
+   * - **API ID Path**: post.body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Nieuwsbrief*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -644,6 +678,36 @@ export type ContentcardSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Default variation for LatestNews Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LatestNewsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *LatestNews*
+ */
+type LatestNewsSliceVariation = LatestNewsSliceDefault;
+
+/**
+ * LatestNews Shared Slice
+ *
+ * - **API ID**: `latest_news`
+ * - **Description**: LatestNews
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LatestNewsSlice = prismic.SharedSlice<
+  "latest_news",
+  LatestNewsSliceVariation
+>;
+
+/**
  * Primary content in *Section → Default → Primary*
  */
 export interface SectionSliceDefaultPrimary {
@@ -920,6 +984,9 @@ declare module "@prismicio/client" {
       ContentcardSliceVariation,
       ContentcardSliceDefault,
       ContentcardSliceInfoCardsExpandable,
+      LatestNewsSlice,
+      LatestNewsSliceVariation,
+      LatestNewsSliceDefault,
       SectionSlice,
       SectionSliceDefaultPrimary,
       SectionSliceVerticalPrimary,

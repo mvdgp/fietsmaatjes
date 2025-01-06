@@ -13,7 +13,6 @@ const tailwindConfig = {
         'secondary': '#97C8E7',
         'tertiary': '#FFEC00',
         'quaternary': '#F5F5F5',
-        'quinary': '#FFEC00', // To circumvent bug class not applying in NavigationMenu & SubMenu
       },
       fontFamily: {
         'fm-font': ['Inter', 'sans-serif'],

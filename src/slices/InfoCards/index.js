@@ -18,7 +18,7 @@ const InfoCards = ({ slice }) => {
   };
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-1 justify-items-center">
+    <section className={`grid grid-cols-1 lg:grid-cols-4 ${slice.variation === "infoCardsExpandable" ? "lg:grid-cols-2" : "lg:grid-cols-4"} gap-1 justify-items-center`}>
       {slice.primary.card.map((item, index) => (
         <InfoCardsItem
           key={index}

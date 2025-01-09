@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { PrismicRichText } from "@prismicio/react";
 
 /**
@@ -7,30 +8,27 @@ import { PrismicRichText } from "@prismicio/react";
  * @param {ContactFormProps}
  */
 const ContactForm = ({ slice }) => {
+  const [state, handleSubmit] = useForm("mbllqjqb");
   const [voornaam, setVoornaam] = useState('');
   const [achternaam, setAchternaam] = useState('');
   const [email, setEmail] = useState('');
   const [telefoonnummer, setTelefoonnummer] = useState('');
   const [woonplaats, setWoonplaats] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!voornaam || !email || !telefoonnummer || !woonplaats) {
-      setErrorMessage('Vul alle verplichte velden in.');
-      setIsSubmitted(false);
-    } else {
-      setErrorMessage('');
-      setIsSubmitted(true);
-    }
+  const handleInputChange = (setter) => (event) => {
+    setter(event.target.value);
   };
 
-  const handleInputChange = (setter) => (event) => {
-    console.log(`Input change: ${event.target.name} = ${event.target.value}`);
-    setter(event.target.value);
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    if (!voornaam || !email || !telefoonnummer || !woonplaats) {
+      setErrorMessage('Vul alle verplichte velden in.');
+    } else {
+      setErrorMessage('');
+      handleSubmit(event);
+    }
   };
 
   return (
@@ -48,8 +46,8 @@ const ContactForm = ({ slice }) => {
         </div>
       </div>
       <div className="w-full flex items-center justify-center">
-        <form className="flex flex-col gap-2 bg-secondary rounded p-4 w-full" onSubmit={handleSubmit}>
-          <div className="md:flex md:gap-4">
+        <form className="flex flex-col gap-2 bg-secondary rounded p-4 w-full" onSubmit={handleFormSubmit}>
+          <div className="md:flex md:gap-2">
             <label className="md:w-1/2">
               Voornaam: <span className="text-red-500">*</span>
               <input
@@ -71,7 +69,7 @@ const ContactForm = ({ slice }) => {
               />
             </label>
           </div>
-          <div className="md:flex md:gap-4">
+          <div className="md:flex md:gap-2">
             <label className="md:w-1/2">
               Email: <span className="text-red-500">*</span>
               <input
@@ -81,6 +79,7 @@ const ContactForm = ({ slice }) => {
                 value={email}
                 onChange={handleInputChange(setEmail)}
               />
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
             </label>
             <label className="md:w-1/2">
               Telefoonnummer: <span className="text-red-500">*</span>
@@ -106,17 +105,22 @@ const ContactForm = ({ slice }) => {
           <label>
             <textarea
               name="message"
-              rows="10"
+              rows="5"
               className="text-black text-xs w-full p-2 bg-white rounded"
               placeholder="Schrijf hier uw bericht..."
               value={message}
               onChange={handleInputChange(setMessage)}
             ></textarea>
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
           </label>
-          <button type="submit" className="p-2 bg-primary text-white rounded">Verzenden</button>
-          {isSubmitted && <p className="bg-green-500 mt-2 text-white rounded p-2 font-bold">Formulier succesvol verzonden!</p>}
+          <button type="submit" className="p-2 bg-primary text-white rounded" disabled={state.submitting}>
+            Verzenden
+          </button>
+          {state.succeeded && <p className="bg-green-500 mt-2 text-white rounded p-2 font-bold">Formulier succesvol verzonden!</p>}
           {errorMessage && <p className="bg-red-500 mt-2 text-white rounded p-2 font-bold">{errorMessage}</p>}
+          {state.errors && <p className="bg-red-500 mt-2 text-white rounded p-2 font-bold">Er is een fout opgetreden bij het verzenden van het formulier.</p>}
         </form>
+
       </div>
     </section>
   );

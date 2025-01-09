@@ -116,7 +116,7 @@ const Section = ({ slice }) => {
     );
   } else if (variation === "noImage") {
     return (
-      <div className="px-8 py-2 md:px-52 flex flex-col w-full text-justify items-center">
+      <div className="px-8 py-8 md:px-52 flex flex-col w-full text-center items-center justify-center">
         <div>
           <PrismicRichText field={slice.primary.body} />
         </div>

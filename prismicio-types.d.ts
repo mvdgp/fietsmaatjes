@@ -52,6 +52,18 @@ interface PageDocumentData {
   parent: prismic.ContentRelationshipField<"page">;
 
   /**
+   * Orientatie field in *Pagina*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Horizontaal (landscape) of Verticaal (letter)
+   * - **Default Value**: Letter
+   * - **API ID Path**: page.orientation
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  orientation: prismic.SelectField<"Letter" | "Landscape", "filled">;
+
+  /**
    * Slice Zone field in *Pagina*
    *
    * - **Field Type**: Slice Zone

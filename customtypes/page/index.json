@@ -37,6 +37,15 @@
           "customtypes": ["page"]
         }
       },
+      "orientation": {
+        "type": "Select",
+        "config": {
+          "label": "Orientatie",
+          "placeholder": "Horizontaal (landscape) of Verticaal (letter)",
+          "options": ["Letter", "Landscape"],
+          "default_value": "Letter"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

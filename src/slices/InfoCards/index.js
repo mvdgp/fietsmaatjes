@@ -18,7 +18,7 @@ const InfoCards = ({ slice }) => {
   };
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 justify-items-center">
+    <section className="grid grid-cols-1 lg:grid-cols-2 gap-1 justify-items-center">
       {slice.primary.card.map((item, index) => (
         <InfoCardsItem
           key={index}
@@ -41,13 +41,12 @@ const InfoCards = ({ slice }) => {
  * @param {Function} props.toggleExpanded - Function to toggle the expanded state.
  */
 const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
-
   return (
     <div
       className={`my-4 group flex flex-col p-4 border border-primary rounded hover:bg-primary flex-shrink-0 
-      ${isExpanded ? 'md:w-[500px] md:h-[300px] w-[320px] h-[500px]' : 'md:w-[220px] md:h-[300px] w-[320px] h-[200px]'}
+      w-[320px] ${isExpanded ? 'h-[500px]' : 'h-[200px]'}
       m-4 items-center text-center gap-1`}
-    > 
+    >
       <ReactSVG
         src={`data:image/svg+xml;base64,${btoa(item.icon)}`}
         beforeInjection={(svg) => {
@@ -74,15 +73,17 @@ const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
       ) : (
         <h6 className="text-primary group-hover:text-white text-center">{item.body}</h6>
       )}
-      {item.link.link_type !== "Web" ? (
+      {item.link && item.link.link_type !== "Web" ? (
         <PrismicNextLink field={item.link} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline" />
       ) : (
-        <a href={'http://'+item.link.url} target={item.link.target} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline">
-          {item.link.text}
-        </a>
+        item.link && (
+          <a href={'http://' + item.link.url} target={item.link.target} className="mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline">
+            {item.link.text}
+          </a>
+        )
       )}
       {variation === "infoCardsExpandable" && (
-        <a onClick={toggleExpanded} className="cursor-pointer mt-2 text-xs font-bold group-hover:text-tertiary hover:no-underline">
+        <a onClick={toggleExpanded} className="cursor-pointer mt-auto text-xs font-bold group-hover:text-tertiary hover:no-underline">
           {isExpanded ? "Terug" : "Lees meer"}
         </a>
       )}

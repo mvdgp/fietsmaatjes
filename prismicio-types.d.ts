@@ -197,13 +197,13 @@ interface RouteDocumentData {
   /**
    * Route field in *Fietsroute*
    *
-   * - **Field Type**: GeoPoint
-   * - **Placeholder**: *None*
+   * - **Field Type**: Text
+   * - **Placeholder**: Fietsroute (google maps embed link)
    * - **API ID Path**: route.route
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  route: prismic.GeoPointField;
+  route: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Fietsroute*
@@ -293,56 +293,6 @@ export type AllDocumentTypes =
   | SocialDocument;
 
 /**
- * Item in *Archive → Default → Primary → Fietsroute*
- */
-export interface ArchiveSliceDefaultPrimaryItemItem {
-  /**
-   * Titel field in *Archive → Default → Primary → Fietsroute*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Titel
-   * - **API ID Path**: archive.default.primary.item[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Beschrijving field in *Archive → Default → Primary → Fietsroute*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Korte beschrijving van de route.
-   * - **API ID Path**: archive.default.primary.item[].body
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  body: prismic.KeyTextField;
-
-  /**
-   * Route field in *Archive → Default → Primary → Fietsroute*
-   *
-   * - **Field Type**: GeoPoint
-   * - **Placeholder**: *None*
-   * - **API ID Path**: archive.default.primary.item[].route
-   * - **Documentation**: https://prismic.io/docs/field#geopoint
-   */
-  route: prismic.GeoPointField;
-}
-
-/**
- * Primary content in *Archive → Default → Primary*
- */
-export interface ArchiveSliceDefaultPrimary {
-  /**
-   * Fietsroute field in *Archive → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: archive.default.primary.item[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  item: prismic.GroupField<Simplify<ArchiveSliceDefaultPrimaryItemItem>>;
-}
-
-/**
  * Default variation for Archive Slice
  *
  * - **API ID**: `default`
@@ -351,7 +301,7 @@ export interface ArchiveSliceDefaultPrimary {
  */
 export type ArchiveSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<ArchiveSliceDefaultPrimary>,
+  Record<string, never>,
   never
 >;
 
@@ -1093,8 +1043,6 @@ declare module "@prismicio/client" {
       SocialDocumentDataSocialItemItem,
       AllDocumentTypes,
       ArchiveSlice,
-      ArchiveSliceDefaultPrimaryItemItem,
-      ArchiveSliceDefaultPrimary,
       ArchiveSliceVariation,
       ArchiveSliceDefault,
       ArchiveSliceAutomatic,

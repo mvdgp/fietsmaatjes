@@ -29,4 +29,17 @@ function dateResolver(date) {
     return resolvedDate;
 }
 
-export { linkResolver, dateResolver };
+function extractURLfromEmbedMap(rawText) {
+    if (!rawText) {
+      console.error("Invalid rawText input:", rawText);
+      return null;
+    }
+    // Update the regex to handle the src attribute correctly
+    const srcMatch = rawText.match(/src="([^"]*)"/);
+    if (srcMatch && srcMatch[1]) {
+      return srcMatch[1];
+    }
+    return null; // Return null if no src attribute is found
+  } 
+
+export { linkResolver, dateResolver, extractURLfromEmbedMap };

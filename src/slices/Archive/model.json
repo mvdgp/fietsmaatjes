@@ -11,37 +11,7 @@
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
-      "primary": {
-        "item": {
-          "type": "Group",
-          "config": {
-            "label": "Fietsroute",
-            "repeat": true,
-            "fields": {
-              "title": {
-                "type": "Text",
-                "config": {
-                  "label": "Titel",
-                  "placeholder": "Titel"
-                }
-              },
-              "body": {
-                "type": "Text",
-                "config": {
-                  "label": "Beschrijving",
-                  "placeholder": "Korte beschrijving van de route."
-                }
-              },
-              "route": {
-                "type": "GeoPoint",
-                "config": {
-                  "label": "Route"
-                }
-              }
-            }
-          }
-        }
-      },
+      "primary": {},
       "items": {}
     },
     {

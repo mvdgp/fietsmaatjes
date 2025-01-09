@@ -27,9 +27,10 @@
         }
       },
       "route": {
-        "type": "GeoPoint",
+        "type": "Text",
         "config": {
-          "label": "Route"
+          "label": "Route",
+          "placeholder": "Fietsroute (google maps embed link)"
         }
       },
       "slices": {

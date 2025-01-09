@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | IFrameSlice
   | FaqSlice
   | ArchiveSlice
   | LatestNewsSlice
@@ -823,6 +824,48 @@ type FaqSliceVariation = FaqSliceDefault;
 export type FaqSlice = prismic.SharedSlice<"faq", FaqSliceVariation>;
 
 /**
+ * Primary content in *IFrame → Default → Primary*
+ */
+export interface IFrameSliceDefaultPrimary {
+  /**
+   * URL field in *IFrame → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: URL (extern)
+   * - **API ID Path**: i_frame.default.primary.url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  url: prismic.LinkField;
+}
+
+/**
+ * Default variation for IFrame Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IFrameSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<IFrameSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *IFrame*
+ */
+type IFrameSliceVariation = IFrameSliceDefault;
+
+/**
+ * IFrame Shared Slice
+ *
+ * - **API ID**: `i_frame`
+ * - **Description**: IFrame
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IFrameSlice = prismic.SharedSlice<"i_frame", IFrameSliceVariation>;
+
+/**
  * Default variation for LatestNews Slice
  *
  * - **API ID**: `default`
@@ -1138,6 +1181,10 @@ declare module "@prismicio/client" {
       FaqSliceDefaultPrimary,
       FaqSliceVariation,
       FaqSliceDefault,
+      IFrameSlice,
+      IFrameSliceDefaultPrimary,
+      IFrameSliceVariation,
+      IFrameSliceDefault,
       LatestNewsSlice,
       LatestNewsSliceVariation,
       LatestNewsSliceDefault,

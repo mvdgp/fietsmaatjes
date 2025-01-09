@@ -7,6 +7,7 @@ export const components = {
   content_cards: dynamic(() => import("./ContentCards")),
   contentcard: dynamic(() => import("./InfoCards")),
   faq: dynamic(() => import("./Faq")),
+  i_frame: dynamic(() => import("./IFrame")),
   latest_news: dynamic(() => import("./LatestNews")),
   section: dynamic(() => import("./Section")),
 };

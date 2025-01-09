@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | FaqSlice
   | ArchiveSlice
   | LatestNewsSlice
   | SectionSlice
@@ -755,6 +756,73 @@ export type ContentcardSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Faq → Default → Primary → Set*
+ */
+export interface FaqSliceDefaultPrimarySetItem {
+  /**
+   * Vraag field in *Faq → Default → Primary → Set*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Vraag
+   * - **API ID Path**: faq.default.primary.set[].question
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  question: prismic.KeyTextField;
+
+  /**
+   * Antwoord field in *Faq → Default → Primary → Set*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Antwoord
+   * - **API ID Path**: faq.default.primary.set[].answer
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  answer: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Faq → Default → Primary*
+ */
+export interface FaqSliceDefaultPrimary {
+  /**
+   * Set field in *Faq → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.default.primary.set[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  set: prismic.GroupField<Simplify<FaqSliceDefaultPrimarySetItem>>;
+}
+
+/**
+ * Default variation for Faq Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FaqSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Faq*
+ */
+type FaqSliceVariation = FaqSliceDefault;
+
+/**
+ * Faq Shared Slice
+ *
+ * - **API ID**: `faq`
+ * - **Description**: Faq
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqSlice = prismic.SharedSlice<"faq", FaqSliceVariation>;
+
+/**
  * Default variation for LatestNews Slice
  *
  * - **API ID**: `default`
@@ -1065,6 +1133,11 @@ declare module "@prismicio/client" {
       ContentcardSliceVariation,
       ContentcardSliceDefault,
       ContentcardSliceInfoCardsExpandable,
+      FaqSlice,
+      FaqSliceDefaultPrimarySetItem,
+      FaqSliceDefaultPrimary,
+      FaqSliceVariation,
+      FaqSliceDefault,
       LatestNewsSlice,
       LatestNewsSliceVariation,
       LatestNewsSliceDefault,

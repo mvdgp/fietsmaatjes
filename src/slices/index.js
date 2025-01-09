@@ -6,6 +6,7 @@ export const components = {
   archive: dynamic(() => import("./Archive")),
   content_cards: dynamic(() => import("./ContentCards")),
   contentcard: dynamic(() => import("./InfoCards")),
+  faq: dynamic(() => import("./Faq")),
   latest_news: dynamic(() => import("./LatestNews")),
   section: dynamic(() => import("./Section")),
 };

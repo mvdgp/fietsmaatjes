@@ -1,0 +1,42 @@
+{
+  "id": "faq",
+  "type": "SharedSlice",
+  "name": "Faq",
+  "description": "Faq",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "set": {
+          "type": "Group",
+          "config": {
+            "label": "Set",
+            "repeat": true,
+            "fields": {
+              "question": {
+                "type": "Text",
+                "config": {
+                  "label": "Vraag",
+                  "placeholder": "Vraag"
+                }
+              },
+              "answer": {
+                "type": "Text",
+                "config": {
+                  "label": "Antwoord",
+                  "placeholder": "Antwoord"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

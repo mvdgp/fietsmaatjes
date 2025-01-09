@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 export const components = {
   archive: dynamic(() => import("./Archive")),
+  contact_form: dynamic(() => import("./ContactForm")),
   content_cards: dynamic(() => import("./ContentCards")),
   contentcard: dynamic(() => import("./InfoCards")),
   faq: dynamic(() => import("./Faq")),

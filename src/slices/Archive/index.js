@@ -244,31 +244,58 @@ const Archive = ({ slice }) => {
       </section>
     );
   } else if (variation === "default") {
-
-    const [toggleRoute, setToggleRoute] = useState({}); // Only first item expanded by default
+    const [toggleRoute, setToggleRoute] = useState({});
     const [route, setRoute] = useState([]);
-    const routesRef = useRef([]); // Ref to avoid dependency loop
+    const routesRef = useRef([]);
 
     // Fetch route data on initial page load
     useEffect(() => {
       const fetchData = async () => {
         try {
           const allRoutes = await fetchRoutesContent();
-
           setRoute([...allRoutes]);
           routesRef.current = allRoutes; // Store fetched routes in ref
           console.log("All routes with mock data:", [...allRoutes]);
 
+          // Check if there's a hash in the URL and expand the corresponding item
+          const hash = window.location.hash.substring(1);
+          if (hash) {
+            const index = allRoutes.findIndex(item => item.slugs[0] === hash);
+            if (index !== -1) {
+              setToggleRoute(prevState => ({ ...prevState, [index]: true }));
+            }
+          }
         } catch (error) {
           console.error("Error fetching all routes:", error);
         }
       };
 
       fetchData();
+
+      // Listen for hash changes
+      const handleHashChange = () => {
+        const hash = window.location.hash.substring(1);
+        const index = routesRef.current.findIndex(item => item.slugs[0] === hash);
+        if (index !== -1) {
+          setToggleRoute(prevState => ({ ...prevState, [index]: true }));
+        }
+      };
+
+      window.addEventListener('hashchange', handleHashChange);
+
+      return () => {
+        window.removeEventListener('hashchange', handleHashChange);
+      };
     }, []); // Empty dependency array to fetch only once
 
-    const handleToggleRoute = (index) => {
-      setToggleRoute({ [index]: !toggleRoute[index] });
+    const handleToggleRoute = (index, slug) => {
+      setToggleRoute(prevState => ({ ...prevState, [index]: !prevState[index] }));
+      if (!toggleRoute[index]) {
+        window.location.hash = slug;
+      } else {
+        // Do not clear the hash
+        window.location.hash = slug;
+      }
     };
 
     return (
@@ -280,7 +307,7 @@ const Archive = ({ slice }) => {
               <div key={index} className="flex flex-col gap-2 w-[80dvw]">
                 <h3
                   className="flex items-center justify-between py-2 border-b border-primary cursor-pointer"
-                  onClick={() => handleToggleRoute(index)}
+                  onClick={() => handleToggleRoute(index, item.slugs[0])}
                 >
                   {item.data.title}
                   <svg

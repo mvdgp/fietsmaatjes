@@ -1,3 +1,4 @@
+import * as prismic from '@prismicio/client';
 import { createClient } from '../prismicio';
 
 async function renderContent(documentIdentifier) {
@@ -126,4 +127,20 @@ async function fetchSocialContent() {
     }
   }
 
-  export { fetchMainPageContent, fetchSubPageContent, fetchSocialContent, renderContent, fetchNewsContent, fetchRoutesContent };
+  async function fetchAllDocuments(query) {
+    const client = createClient();
+    try {
+      const response = await client.get({
+        filters: [prismic.filter.fulltext('document', query)],
+        pageSize: 100, // Adjust the page size as needed
+      });
+      console.log('Query:', query);
+      console.log('Response:', response);
+      return response.results;
+    } catch (error) {
+      console.error('Error fetching documents from Prismic:', error);
+      throw error;
+    }
+  }
+
+  export { fetchMainPageContent, fetchSubPageContent, fetchSocialContent, renderContent, fetchNewsContent, fetchRoutesContent, fetchAllDocuments };

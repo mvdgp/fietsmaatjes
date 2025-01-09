@@ -18,7 +18,6 @@ const LatestNews = ({ slice }) => {
       try {
         const latestNews = await fetchNewsContent(true);
         setNews(latestNews);
-        console.log('Latest news:', latestNews);
       } catch (error) {
         console.error('Error fetching latest news:', error);
       }

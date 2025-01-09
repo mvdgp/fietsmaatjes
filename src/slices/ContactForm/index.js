@@ -105,7 +105,7 @@ const ContactForm = ({ slice }) => {
           <label>
             <textarea
               name="message"
-              rows="5"
+              rows="15"
               className="text-black text-xs w-full p-2 bg-white rounded"
               placeholder="Schrijf hier uw bericht..."
               value={message}

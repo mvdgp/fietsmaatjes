@@ -21,20 +21,20 @@ const Section = ({ slice }) => {
   }, []);
 
   if (variation === "default") {
+    console.log(bgColor);
     return (
-      <section className={`h-full w-full flex flex-col md:flex-row gap-6 max-w-[90dvw] ${bgColor === "lichtblauw" ? "bg-white" : "bg-secondary"}`}>
+      <section className={`px-2 py-4 h-full w-full flex flex-col md:flex-row gap-6 max-w-[90dvw] ${bgColor === "lichtblauw" ? "bg-secondary" : "bg-secondary"} ${bgColor === "wit" ? "bg-white" : "bg-white"}`}>
         <PrismicImage
           ref={imageRef}
           field={slice.primary.image}
-          className="md:w-[40dvw] object-cover object-center rounded"
+          className="mt-6 md:w-[40dvw] max-h-[500px] object-cover object-center rounded"
         />
-        <div className="p-4 md:w-[60dvw]">
+        <div className="flex gap-3 flex-col p-4 md:w-[60dvw]">
           <PrismicRichText
             field={slice.primary.body}
             components={{
-              heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
               paragraph: ({ children }) => (
-                <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
+                <p className="text-justify">
                   {children}
                 </p>
               ),
@@ -68,25 +68,25 @@ const Section = ({ slice }) => {
     );
   } else if (variation === "mirrored") {
     return (
-      <section className={`h-full w-full flex flex-col md:flex-row gap-10 py-10 px-8 lg:px-36 ${bgColor === "lichtblauw" ? "bg-white" : "bg-secondary"}`}>
-        <div className="p-4 md:w-[60dvw]">
-          <PrismicRichText
-            field={slice.primary.body}
-            components={{
-              heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
-              paragraph: ({ children }) => (
-                <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
-                  {children}
-                </p>
-              ),
-            }}
-          />
-        </div>
-        <PrismicImage
-          ref={imageRef}
-          field={slice.primary.image}
-          className="md:w-[40dvw] object-cover object-center rounded"
+      <section className={`h-full w-full flex flex-col md:flex-row gap-10 py-10 px-8 lg:px-36 ${bgColor === "Lichtblauw" ? "bg-secondary" : bgColor === "Wit" ? "bg-white" : ""}`}>
+      <div className="p-4 md:w-[60dvw]">
+        <PrismicRichText
+        field={slice.primary.body}
+        components={{
+          heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
+          paragraph: ({ children }) => (
+          <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
+            {children}
+          </p>
+          ),
+        }}
         />
+      </div>
+      <PrismicImage
+        ref={imageRef}
+        field={slice.primary.image}
+        className="md:w-[40dvw] max-w-[75dvh] object-cover object-center rounded"
+      />
       </section>
     );
 

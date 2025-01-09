@@ -67,6 +67,9 @@
     @apply px-2 py-2;
     @apply bg-primary border border-white focus:outline-secondary;
   }
+  img {
+    @apply rounded;
+  }
 }
 
 

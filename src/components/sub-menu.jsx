@@ -11,7 +11,7 @@ const SubMenu = ({ menuItem }) => {
                     <li key={subItem.id} className="list-none">
                         <a
                             href={subItem.url}
-                            className={`text-sm text-white hover:text-secondary hover:no-underline ${pathName.includes(subItem.uid) ? 'text-tertiary' : ''}`}
+                            className={`text-sm text-white hover:text-secondary hover:no-underline ${pathName.includes(subItem.uid) ? 'text-[#FFEC00]' : ''}`}
                         >
                             {subItem.label}
                         </a>

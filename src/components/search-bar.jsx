@@ -88,7 +88,7 @@ const SearchBar = () => {
                                 {results.map((result) => (
                                     <li key={result.id} className="list-none mb-2">
                                         <a href={result.url} className="text-primary hover:underline">
-                                            {console.log('Global search result:', result.title, result.url)},{result.title[0].text || result.title}
+                                            {result.title[0].text || result.title}
                                         </a>
                                     </li>
                                 ))}

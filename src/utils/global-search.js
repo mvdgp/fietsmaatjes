@@ -7,10 +7,10 @@ export const globalSearch = async (query) => {
       let url;
       let title;
       if (doc.type === 'post') {
-        url = '/nieuws#' + doc.slugs[0];
+        url = '/nieuws#' + doc.uid;
         title = 'Nieuws - ' + doc.data.title[0].text;
       } else if (doc.type === 'route') {
-        url = '/doe-mee/fietsroutes#' + doc.slugs[0];
+        url = '/doe-mee/fietsroutes#' + doc.uid;
         title = 'Fietsroutes - ' + doc.data.title;
       } else {
         url = doc.url;

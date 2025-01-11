@@ -23,7 +23,8 @@ const Page = () => {
                 // Subpages are always redirected to their full UID
                 const response = await renderContent(slug);
                 if (response.uid !== response.fullUid) {
-                    router.replace(`/${response.fullUid}`);
+                    const hash = window.location.hash;
+                    router.replace(`/${response.fullUid}${hash}`);
                 }
 
                 setContent(response);

@@ -114,15 +114,13 @@ async function fetchSocialContent() {
   }
 
   async function fetchRoutesContent() {
-
     try {
       const client = createClient();
       const response = await client.getByType('route');
-
-      return response.results;
-
+      const sortedResults = response.results.sort((a, b) => a.data.title.localeCompare(b.data.title));
+      return sortedResults;
     } catch (error) {
-      console.error('Error fetching news content from Prismic:', error);
+      console.error('Error fetching routes content from Prismic:', error);
       throw error;
     }
   }

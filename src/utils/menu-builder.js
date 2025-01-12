@@ -1,27 +1,25 @@
 import { fetchMainPageContent, fetchSubPageContent, fetchSocialContent } from "./prismic-fetcher";
 
-async function buildMenu () {
-
+/**
+ * Builds the menu structure by fetching main and sub page content.
+ * @returns {Promise<Array>} - A promise that resolves to an array representing the menu structure.
+ */
+async function buildMenu() {
     // Fetch main page content
     const mainPages = await fetchMainPageContent();
     const menu = [];
 
     for (const mainPage of mainPages) {
-
         // Fetch sub page content
-        const submenu = [];
         const subPages = await fetchSubPageContent(mainPage.id);
 
-        for (const subPage of subPages) {
-
-            // Create sub menu item
-            submenu.push({
-                id: subPage.id,
-                uid: subPage.uid,
-                url: `${mainPage.url}${subPage.url}`,
-                label: subPage.data.title[0].text
-            });
-        }
+        // Create sub menu items
+        const submenu = subPages.map(subPage => ({
+            id: subPage.id,
+            uid: subPage.uid,
+            url: `${mainPage.url}${subPage.url}`,
+            label: subPage.data.title[0].text
+        }));
 
         // Create main menu item
         menu.push({
@@ -33,15 +31,17 @@ async function buildMenu () {
         });
     }
 
-    return (menu);
-};
+    return menu;
+}
 
-async function buildSocial () {
-    
+/**
+ * Fetches and returns social content.
+ * @returns {Promise<Array>} - A promise that resolves to an array of social content.
+ */
+async function buildSocial() {
     // Fetch social content
     const socials = await fetchSocialContent();
-
-    return (socials);
+    return socials;
 }
 
 export { buildMenu, buildSocial };

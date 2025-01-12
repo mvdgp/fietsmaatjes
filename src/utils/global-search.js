@@ -1,20 +1,32 @@
 import { fetchAllDocuments } from './prismic-fetcher';
 
+/**
+ * Performs a global search based on the provided query.
+ * @param {string} query - The search query.
+ * @returns {Promise<Array>} - A promise that resolves to an array of search results.
+ */
 export const globalSearch = async (query) => {
   try {
     const documents = await fetchAllDocuments(query);
+
+    // Map through documents and construct search results
     const results = documents.map((doc) => {
       let url;
       let title;
-      if (doc.type === 'post') {
-        url = '/nieuws#' + doc.uid;
-        title = 'Nieuws - ' + doc.data.title[0].text;
-      } else if (doc.type === 'route') {
-        url = '/doe-mee/fietsroutes#' + doc.uid;
-        title = 'Fietsroutes - ' + doc.data.title;
-      } else {
-        url = doc.url;
-        title = doc.data.title || doc.data.name || 'Untitled';
+
+      // Determine URL and title based on document type
+      switch (doc.type) {
+        case 'post':
+          url = `/nieuws#${doc.uid}`;
+          title = `Nieuws - ${doc.data.title[0].text}`;
+          break;
+        case 'route':
+          url = `/doe-mee/fietsroutes#${doc.uid}`;
+          title = `Fietsroutes - ${doc.data.title}`;
+          break;
+        default:
+          url = doc.url;
+          title = doc.data.title || doc.data.name || 'Untitled';
       }
 
       return {

@@ -1,24 +1,22 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import { usePathname } from 'next/navigation';
-import SubMenu from '@/components/sub-menu';
+import React, { useState, useEffect, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
+import { usePathname } from "next/navigation";
+import SubMenu from "@/components/sub-menu";
 
 const NavigationMenu = ({ menuItems }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState(null);
-  const [openSubMenu, setOpenSubMenu] = useState(null);
-  const navRef = useRef(null);
-  const isMediumScreen = useMediaQuery({ query: '(min-width: 768px)' });
-  const pathName = usePathname();
+  const [isOpen, setIsOpen] = useState(false); // Tracks main menu state
+  const [hoveredItem, setHoveredItem] = useState(null); // Tracks hovered menu item
+  const [openSubMenu, setOpenSubMenu] = useState(null); // Tracks open sub-menu in mobile
+  const navRef = useRef(null); // Reference to the navigation element
+  const isMediumScreen = useMediaQuery({ query: "(min-width: 768px)" }); // Responsive check
+  const pathName = usePathname(); // Current path for active link highlighting
 
-  // Toggle the main menu
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // Toggles the visibility of the main menu
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
-  // Close menu if clicked outside
+  // Closes the menu and sub-menus if a click occurs outside the nav element
   const handleClickOutside = (event) => {
     if (navRef.current && !navRef.current.contains(event.target)) {
       setIsOpen(false);
@@ -26,44 +24,29 @@ const NavigationMenu = ({ menuItems }) => {
     }
   };
 
-  // Add/remove event listener for outside clicks
+  // Adds or removes the event listener for clicks outside the menu
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Handle menu item click
+  // Closes the menu and sub-menus on menu item click
   const handleMenuItemClick = () => {
     setIsOpen(false);
     setOpenSubMenu(null);
   };
 
-  // Handle mouse enter on menu item
+  // Handles hover state for medium screens and above
   const handleMouseEnter = (item) => {
-    if (isMediumScreen) {
-      setHoveredItem(item);
-    }
+    if (isMediumScreen) setHoveredItem(item);
   };
-
-  // Handle mouse leave on menu item
   const handleMouseLeave = (item) => {
-    if (isMediumScreen && hoveredItem === item) {
-      setHoveredItem(null);
-    }
+    if (isMediumScreen && hoveredItem === item) setHoveredItem(null);
   };
 
-  // Toggle sub-menu for mobile view
+  // Toggles sub-menu visibility for mobile view
   const handleSubMenuToggle = (item) => {
-    if (!isMediumScreen) {
-      setOpenSubMenu(openSubMenu === item ? null : item);
-    }
+    if (!isMediumScreen) setOpenSubMenu(openSubMenu === item ? null : item);
   };
 
   return (
@@ -89,25 +72,35 @@ const NavigationMenu = ({ menuItems }) => {
       </div>
 
       {/* Main menu */}
-      <ul className={`pb-4 md:pb-0 flex gap-6 ${isOpen ? 'flex-col absolute px-6 pt-8 bg-primary rounded w-[330px]' : 'hidden'} md:flex`}>
+      <ul
+        className={`${
+          isOpen ? "flex-col absolute px-6 pt-8 bg-primary rounded w-[330px]" : "hidden"
+        } 
+        md:flex md:gap-6 md:pb-0 flex gap-6 pb-4`}
+      >
         {menuItems.map((item) => (
           <li
             key={item.id}
-            className="group md:flex md:flex-col list-none relative items-center md:mt-3"
+            className="group md:flex md:flex-col relative list-none md:mt-3 items-center"
             onMouseEnter={() => handleMouseEnter(item)}
             onMouseLeave={() => handleMouseLeave(item)}
           >
+            {/* Menu item link */}
             <a
               href={item.url}
-              className={`font-bold text-base text-white hover:text-secondary hover:no-underline ${pathName.includes(item.uid) ? 'text-tertiary' : ''}`}
+              className={`font-bold text-base 
+              text-white hover:text-secondary hover:no-underline 
+              ${pathName.includes(item.uid) ? "text-tertiary" : ""}`}
               onClick={handleMenuItemClick}
             >
               {item.label}
             </a>
+
+            {/* Sub-menu toggle button for mobile */}
             {item.submenu.length > 0 && (
               <button
                 onClick={() => handleSubMenuToggle(item)}
-                className="border-none absolute right-0 md:relative"
+                className="absolute right-0 md:relative border-none"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -115,15 +108,23 @@ const NavigationMenu = ({ menuItems }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="size-4 fill-none text-white hover:fill-none group-hover:text-secondary md:mt-[-6px]"
+                  className="size-4 text-white group-hover:text-secondary md:mt-[-6px]"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
                 </svg>
               </button>
             )}
-            {((hoveredItem === item && item.submenu.length > 0) || (openSubMenu === item && item.submenu.length > 0)) && (
+
+            {/* Sub-menu */}
+            {((hoveredItem === item && item.submenu.length > 0) ||
+              (openSubMenu === item && item.submenu.length > 0)) && (
               <div
-                className="relative md:absolute md:w-[220px] top-full left-0 pt-2 md:pt-0 block"
+                className="relative md:absolute top-full left-0 
+                md:w-[220px] pt-2 md:pt-0 block"
                 onMouseEnter={() => handleMouseEnter(item)}
                 onMouseLeave={() => handleMouseLeave(item)}
               >

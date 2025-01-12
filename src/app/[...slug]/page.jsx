@@ -11,8 +11,8 @@ const Page = () => {
     const path = usePathname();
     const router = useRouter();
 
-    let slug = 'home';
-    if (path !== '/') slug = path.split('/').pop();
+    // Determine the slug based on the path
+    const slug = path === '/' ? 'home' : path.split('/').pop();
 
     const [content, setContent] = useState(null);
     const [error, setError] = useState(false);
@@ -20,13 +20,16 @@ const Page = () => {
     useEffect(() => {
         const fetchContent = async () => {
             try {
-                // Subpages are always redirected to their full UID
+                // Fetch content based on the slug
                 const response = await renderContent(slug);
+
+                // Redirect if the UID does not match the full UID
                 if (response.uid !== response.fullUid) {
                     const hash = window.location.hash;
                     router.replace(`/${response.fullUid}${hash}`);
                 }
 
+                // Set the fetched content
                 setContent(response);
                 setError(false); // Reset error state if content is fetched successfully
             } catch (error) {
@@ -36,8 +39,9 @@ const Page = () => {
         };
 
         fetchContent();
-    }, [slug]);
+    }, [slug, router]);
 
+    // Render NotFound component if there is an error
     if (error) {
         return <NotFound />;
     }

@@ -1,3 +1,11 @@
+import React from 'react';
+
+/**
+ * IFrame component to display an iframe with the given URL
+ * @param {Object} props - Component properties
+ * @param {Object} props.slice - Slice data from Prismic
+ * @returns {JSX.Element} Rendered IFrame component
+ */
 const IFrame = ({ slice }) => {
   const url = slice.primary.url.url;
 
@@ -5,9 +13,18 @@ const IFrame = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="flex items-center justify-center h-[100vh] w-full"
+      className="
+        flex items-center justify-center
+        h-[100dvh] w-full
+      "
     >
-      <div className="flex items-center justify-center scale-80 w-[100dvw] h-[100vh]">
+      <div
+        className="
+          flex items-center justify-center
+          scale-80
+          w-[100dvw] h-[100dvh]
+        "
+      >
         <iframe
           className="w-full h-full"
           src={url}

@@ -20,95 +20,110 @@ const Section = ({ slice }) => {
     }
   }, []);
 
+  // Common styles for sections
+  const sectionStyles = `
+    h-full w-full gap-6
+    p-4
+  `;
+
+  // Common styles for images
+  const imageStyles = `
+    object-cover object-center rounded
+  `;
+
+  // Common styles for text containers
+  const textContainerStyles = `
+    flex flex-col p-4
+  `;
+
+  // Function to render PrismicRichText with common components
+  const renderRichText = (field, components) => (
+    <PrismicRichText
+      field={field}
+      components={components}
+    />
+  );
+
+  // Function to render image
+  const renderImage = (field, additionalStyles = '') => (
+    <PrismicImage
+      ref={imageRef}
+      field={field}
+      className={`${imageStyles} ${additionalStyles}`}
+    />
+  );
+
+  // Function to render section with image and text
+  const renderSectionWithImageAndText = (imageStyles, textStyles, richTextComponents) => (
+    <section className={`${sectionStyles} ${bgColor === "lichtblauw" ? "bg-secondary" : "bg-white"} flex flex-col md:flex-row items-center`}>
+      {renderImage(slice.primary.image, imageStyles)}
+      <div className={`${textContainerStyles} ${textStyles}`}>
+        {renderRichText(slice.primary.body, richTextComponents)}
+      </div>
+    </section>
+  );
+
+  // Define rich text components for different variations
+  const defaultRichTextComponents = {
+    heading1: ({ children }) => <h1 className="pt-2">{children}</h1>,
+    heading2: ({ children }) => <h2 className="pt-2">{children}</h2>,
+    heading3: ({ children }) => <h3 className="pt-2">{children}</h3>,
+    paragraph: ({ children }) => <p className="text-justify">{children}</p>,
+  };
+
+  const verticalRichTextComponents = {
+    heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
+    paragraph: ({ children }) => (
+      <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
+        {children}
+      </p>
+    ),
+  };
+
+  const mirroredRichTextComponents = {
+    heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
+    paragraph: ({ children }) => (
+      <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
+        {children}
+      </p>
+    ),
+  };
+
+  const stackedRichTextComponents = {
+    heading1: ({ children }) => <h1 className="text-4xl">{children}</h1>,
+    heading2: ({ children }) => <h2 className="text-4xl text-white">{children}</h2>,
+    heading3: ({ children }) => <h3 className="text-4xl text-primary">{children}</h3>,
+  };
+
+  // Render different variations
   if (variation === "default") {
-    console.log(bgColor);
-    return (
-      <section className={`px-2 py-4 h-full w-full flex flex-col md:flex-row gap-6 max-w-[90dvw] ${bgColor === "lichtblauw" ? "bg-secondary" : "bg-secondary"} ${bgColor === "wit" ? "bg-white" : "bg-white"}`}>
-        <PrismicImage
-          ref={imageRef}
-          field={slice.primary.image}
-          className="mt-6 md:w-[40dvw] max-h-[500px] object-cover object-center rounded"
-        />
-        <div className="flex gap-3 flex-col p-4 md:w-[60dvw]">
-          <PrismicRichText
-            field={slice.primary.body}
-            components={{
-              paragraph: ({ children }) => (
-                <p className="text-justify">
-                  {children}
-                </p>
-              ),
-            }}
-          />
-        </div>
-      </section>
-    );
+    return renderSectionWithImageAndText("md:w-[40dvw] max-h-[500px]", "md:w-[60dvw]", defaultRichTextComponents);
   } else if (variation === "vertical") {
     return (
-      <section className="h-full w-full flex flex-col gap-6">
-        <PrismicImage
-          ref={imageRef}
-          field={slice.primary.image}
-          className="w-full h-[70dvh] object-cover object-center rounded"
-        />
+      <section className={`${sectionStyles} flex flex-col`}>
+        {renderImage(slice.primary.image, "w-full h-[70dvh]")}
         <div className="py-4 px-8 md:px-40 w-full">
-          <PrismicRichText
-            field={slice.primary.body}
-            components={{
-              heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
-              paragraph: ({ children }) => (
-                <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
-                  {children}
-                </p>
-              ),
-            }}
-          />
+          {renderRichText(slice.primary.body, verticalRichTextComponents)}
         </div>
       </section>
     );
   } else if (variation === "mirrored") {
     return (
-      <section className={`h-full w-full flex flex-col md:flex-row gap-10 py-10 px-8 lg:px-36 ${bgColor === "Lichtblauw" ? "bg-secondary" : bgColor === "Wit" ? "bg-white" : ""}`}>
-      <div className="p-4 md:w-[60dvw]">
-        <PrismicRichText
-        field={slice.primary.body}
-        components={{
-          heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
-          paragraph: ({ children }) => (
-          <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
-            {children}
-          </p>
-          ),
-        }}
-        />
-      </div>
-      <PrismicImage
-        ref={imageRef}
-        field={slice.primary.image}
-        className="md:w-[40dvw] max-w-[75dvh] object-cover object-center rounded"
-      />
+      <section className={`${sectionStyles} md:flex-row gap-10 py-10 px-8 lg:px-36 ${bgColor === "Lichtblauw" ? "bg-secondary" : "bg-white"} flex flex-col`}>
+        <div className="p-4 md:w-[60dvw]">
+          {renderRichText(slice.primary.body, mirroredRichTextComponents)}
+        </div>
+        {renderImage(slice.primary.image, "md:w-[40dvw] max-w-[75dvh]")}
       </section>
     );
-
   } else if (variation === "stacked") {
     return (
       <section className="relative h-full w-full flex flex-col gap-6">
-        <PrismicImage
-          ref={imageRef}
-          field={slice.primary.image}
-          className="w-full h-[70dvh] object-cover object-center rounded"
-        />
+        {renderImage(slice.primary.image, "w-full h-[70dvh]")}
         <div className="absolute inset-0 flex items-end mb-14 justify-center">
           <div className="p-4 w-full bg-white bg-opacity-60 p-4 md:p-10 flex items-center justify-center">
             <div className="font-semibold text-white text-center w-full">
-              <PrismicRichText
-                field={slice.primary.body}
-                components={{
-                  heading1: ({ children }) => <h1 className="text-4xl">{children}</h1>,
-                  heading2: ({ children }) => <h2 className="text-4xl text-white">{children}</h2>,
-                  heading3: ({ children }) => <h3 className="text-4xl text-primary">{children}</h3>,
-                }}
-              />
+              {renderRichText(slice.primary.body, stackedRichTextComponents)}
             </div>
           </div>
         </div>
@@ -117,15 +132,11 @@ const Section = ({ slice }) => {
   } else if (variation === "noImage") {
     return (
       <div className="px-8 py-8 md:px-52 flex flex-col w-full text-center items-center justify-center">
-        <div>
-          <PrismicRichText field={slice.primary.body} />
-        </div>
+        {renderRichText(slice.primary.body, {})}
       </div>
     );
   } else {
-    return (
-      <div>test</div>
-    );
+    return <div>test</div>;
   }
 };
 

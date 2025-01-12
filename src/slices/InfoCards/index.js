@@ -13,12 +13,21 @@ import { ReactSVG } from 'react-svg';
 const InfoCards = ({ slice }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
+  /**
+   * Toggles the expanded state of a card
+   * @param {number} index - Index of the card to toggle
+   */
   const toggleExpanded = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
   return (
-    <section className={`grid grid-cols-1 lg:grid-cols-4 ${slice.variation === "infoCardsExpandable" ? "lg:grid-cols-2" : "lg:grid-cols-4"} gap-1 justify-items-center`}>
+    <section
+      className={`
+        grid grid-cols-1 gap-1 justify-items-center
+        ${slice.variation === "infoCardsExpandable" ? "lg:grid-cols-3" : "lg:grid-cols-4"}
+      `}
+    >
       {slice.primary.card.map((item, index) => (
         <InfoCardsItem
           key={index}
@@ -43,9 +52,11 @@ const InfoCards = ({ slice }) => {
 const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
   return (
     <div
-      className={`my-4 group flex flex-col p-4 border border-primary rounded hover:bg-primary flex-shrink-0 
-      w-[320px] ${isExpanded ? 'h-[500px]' : 'h-[200px]'}
-      m-4 items-center text-center gap-1`}
+      className={`
+        my-4 group flex flex-col p-4 border border-primary rounded
+        hover:bg-primary flex-shrink-0 w-[320px] m-4 items-center text-center gap-1
+        ${isExpanded ? 'h-[500px]' : 'h-[200px]'}
+      `}
     >
       <ReactSVG
         src={`data:image/svg+xml;base64,${btoa(item.icon)}`}

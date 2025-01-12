@@ -5,7 +5,7 @@
  */
 async function linkResolver(linkObject) {
     if (linkObject.link_type === 'Web') {
-        if (!linkObject.url.startsWith('http://') && !linkObject.url.startsWith('https://')) {
+        if (!/^https?:\/\//i.test(linkObject.url)) {
             linkObject.url = 'http://' + linkObject.url;
         }
     }

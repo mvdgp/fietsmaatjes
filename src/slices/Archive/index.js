@@ -213,7 +213,7 @@ const sortItemsByTitle = (items) => {
 };
 
 // Render grouped items
-const renderGroupedItems = (groupedItems, toggleYear, toggleMonth, expandedYears, expandedMonths, setState) => {
+export const renderGroupedItems = (groupedItems, toggleYear, toggleMonth, expandedYears, expandedMonths, setState) => {
   return Object.keys(groupedItems)
     .sort((a, b) => b - a)
     .map((year) => (
@@ -314,7 +314,7 @@ const renderGroupedItems = (groupedItems, toggleYear, toggleMonth, expandedYears
 };
 
 // Render sorted items in a collapsible container for "default" variation
-const renderSortedItems = (sortedItems, state, setState, toggleDefaultGroup) => {
+export const renderSortedItems = (sortedItems, state, setState, toggleDefaultGroup) => {
   const isExpanded = state.expandedDefaultGroup;
 
   return (

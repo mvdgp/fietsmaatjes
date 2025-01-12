@@ -123,8 +123,9 @@ const NavigationMenu = ({ menuItems }) => {
             {((hoveredItem === item && item.submenu.length > 0) ||
               (openSubMenu === item && item.submenu.length > 0)) && (
               <div
+                role="submenu"
                 className="relative md:absolute top-full left-0 
-                md:w-[220px] pt-2 md:pt-0 block"
+                md:w-[220px] pt-2 md:pt-0 block sub-menu"
                 onMouseEnter={() => handleMouseEnter(item)}
                 onMouseLeave={() => handleMouseLeave(item)}
               >

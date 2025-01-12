@@ -26,12 +26,12 @@ const IFrame = ({ slice }) => {
         "
       >
         <iframe
+          role="iframe"
           className="w-full h-full"
           src={url}
           width="600"
           height="400"
           style={{ border: 0, overflow: 'auto' }}
-          allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>

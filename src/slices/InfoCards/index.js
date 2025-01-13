@@ -56,7 +56,7 @@ const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
   return (
     <div
       className={`
-        my-4 group flex flex-col p-4 border border-primary rounded
+        my-4 group flex flex-col p-4 border border-primary rounded-lg
         hover:bg-primary flex-shrink-0 w-[320px] lg:w-[250px] m-4 items-center text-center gap-1
         ${isExpanded ? 'h-[600px]' : 'h-[200px] lg:h-[300px]'}
       `}

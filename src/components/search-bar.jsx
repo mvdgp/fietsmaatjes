@@ -105,7 +105,7 @@ const SearchBar = () => {
                         className="
                             relative bg-white 
                             p-4 rounded-lg shadow-lg 
-                            max-w-lg w-full
+                            max-w-lg w-[90dvw] md:w-full
                         "
                     >
                         {/* Close button */}

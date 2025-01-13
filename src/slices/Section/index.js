@@ -29,7 +29,7 @@ const Section = ({ slice }) => {
 
   // Common styles for images
   const imageStyles = `
-    object-cover object-center rounded
+    object-cover object-center rounded-lg
   `;
 
   // Common styles for text containers
@@ -57,7 +57,7 @@ const Section = ({ slice }) => {
         <h6
           className=" 
             relative max-w-[200px]
-            ml-[10px] mt-[-24px] p-1 rounded-t
+            ml-[10px] mt-[-24px] p-1 rounded-t-lg
             font-bold
             text-white text-center
             bg-primary
@@ -132,7 +132,7 @@ const Section = ({ slice }) => {
   } else if (variation === "stacked") {
     return (
       <section className="relative h-full w-full flex flex-col gap-6">
-        {renderImage(slice.primary.image, "w-full h-[70dvh]")}
+        {renderImage(slice.primary.image, "rounded-none w-full h-[70dvh]")}
         <div className="absolute inset-0 flex items-end mb-14 justify-center">
           {slice.primary.body != '' &&
             <div className="p-4 w-full bg-white bg-opacity-60 p-4 md:p-10 flex items-center justify-center">

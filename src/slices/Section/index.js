@@ -125,7 +125,7 @@ const Section = ({ slice }) => {
         <div className="p-4 md:w-[60dvw]">
           {renderRichText(slice.primary.body, mirroredRichTextComponents)}
         </div>
-        {renderImage(slice.primary.image, "md:w-[40dvw] max-w-[75dvh]")}
+        {renderImage(slice.primary.image, "md:w-[40dvw] max-w-[85dvw]")}
       </section>
     );
   } else if (variation === "stacked") {

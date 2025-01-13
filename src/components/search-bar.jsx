@@ -58,7 +58,7 @@ const SearchBar = () => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     className="
-                        border border-gray-300 rounded 
+                        border border-gray-300 rounded-lg 
                         focus:outline-none focus:ring focus:ring-primary
                         px-4 py-2 
                         w-40 md:w-52
@@ -104,7 +104,7 @@ const SearchBar = () => {
                         ref={modalRef}
                         className="
                             relative bg-white 
-                            p-4 rounded shadow-lg 
+                            p-4 rounded-lg shadow-lg 
                             max-w-lg w-full
                         "
                     >

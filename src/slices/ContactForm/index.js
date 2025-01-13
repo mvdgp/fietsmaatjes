@@ -63,7 +63,7 @@ const ContactForm = ({ slice }) => {
         <form 
           className="
             flex flex-col gap-2 
-            bg-secondary rounded p-4 
+            bg-secondary rounded-lg p-4 
             w-full
           " 
           onSubmit={handleFormSubmit}
@@ -169,9 +169,9 @@ const ContactForm = ({ slice }) => {
           >
             Verzenden
           </button>
-          {state.succeeded && <p className="bg-green-500 mt-2 text-white rounded p-2 font-bold">Formulier succesvol verzonden!</p>}
-          {errorMessage && <p className="bg-red-500 mt-2 text-white rounded p-2 font-bold">{errorMessage}</p>}
-          {state.errors && <p className="bg-red-500 mt-2 text-white rounded p-2 font-bold">Er is een fout opgetreden bij het verzenden van het formulier.</p>}
+          {state.succeeded && <p className="bg-green-500 mt-2 text-white rounded-lg p-2 font-bold">Formulier succesvol verzonden!</p>}
+          {errorMessage && <p className="bg-red-500 mt-2 text-white rounded-lg p-2 font-bold">{errorMessage}</p>}
+          {state.errors && <p className="bg-red-500 mt-2 text-white rounded-lg p-2 font-bold">Er is een fout opgetreden bij het verzenden van het formulier.</p>}
         </form>
       </div>
     </section>

@@ -45,7 +45,7 @@
     @apply text-primary font-bold text-xs;
 
     /* Border styles */
-    @apply border border-primary rounded;
+    @apply border border-primary rounded-lg;
 
     /* Padding */
     @apply px-4 py-1;
@@ -63,12 +63,12 @@
     @apply w-6 h-6 text-primary;
   }
   input {
-    @apply rounded text-xs text-white;
+    @apply rounded-lg text-xs text-white;
     @apply px-2 py-2;
     @apply bg-primary border border-white focus:outline-secondary;
   }
   img {
-    @apply rounded;
+    @apply rounded-lg;
   }
 }
 

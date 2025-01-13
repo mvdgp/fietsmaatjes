@@ -19,7 +19,7 @@ const SubMenu = ({ menuItem }) => {
                             className={`
                                 text-sm text-white
                                 hover:no-underline flex
-                                hover:text-secondary ${pathName.includes(subItem.uid) ? 'text-tertiary' : 'text-red-500'}
+                                hover:text-secondary ${pathName.includes(subItem.uid) ? 'text-tertiary' : ''}
                                 gap-4
                             `}
                         >

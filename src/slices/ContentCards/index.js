@@ -30,7 +30,7 @@ const ContentCardItem = ({ item }) => {
   return (
     <div className="
       group 
-      flex flex-shrink-0 items-center gap-1 m-4 rounded bg-secondary hover:bg-primary
+      flex flex-shrink-0 items-center gap-1 m-4 rounded-lg bg-secondary hover:bg-primary
       md:flex-col md:text-center 
       w-[350px] h-[200px] md:w-[250px] md:h-[350px]
     ">
@@ -39,7 +39,7 @@ const ContentCardItem = ({ item }) => {
         <PrismicImage 
           field={item.image} 
           className="
-            w-[130px] h-[160px] object-cover object-center rounded 
+            w-[130px] h-[160px] object-cover object-center rounded-lg 
             md:w-[220px]
           "
         />

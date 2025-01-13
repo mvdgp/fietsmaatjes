@@ -25,12 +25,11 @@ const InfoCards = ({ slice }) => {
   };
 
   // Determine the grid column class based on the number of filtered cards
-  const gridColsClass = `lg:grid-cols-${Math.min(filteredCards.length, slice.variation === "infoCardsExpandable" ? 3 : 4)}`;
-  console.log(gridColsClass);
+  const gridColsClass = `xl:grid-cols-${Math.min(filteredCards.length, slice.variation === "infoCardsExpandable" ? 3 : 4)}`;
 
   return (
     <section
-      className={`grid grid-cols-1 gap-1 justify-items-center ${gridColsClass}`}
+      className={`grid grid-cols-1 lg:grid-cols-4 gap-1 justify-items-center ${gridColsClass}`}
     >
       {filteredCards.map((item, index) => (
         <InfoCardsItem

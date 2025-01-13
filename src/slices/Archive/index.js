@@ -223,7 +223,7 @@ export const renderGroupedItems = (groupedItems, toggleYear, toggleMonth, expand
           className="
             flex items-center justify-between
             p-2 px-3
-            text-white bg-primary rounded cursor-pointer hover:bg-secondary
+            text-white bg-primary rounded-lg cursor-pointer hover:bg-secondary
           "
         >
           {year}
@@ -292,7 +292,7 @@ export const renderGroupedItems = (groupedItems, toggleYear, toggleMonth, expand
                                 className={`
                                   flex items-center gap-2
                                   p-2
-                                  rounded cursor-pointer hover:bg-secondary
+                                  rounded-lg cursor-pointer hover:bg-secondary
                                   ${itemBgColor}
                                 `}
                                 onClick={() => handleItemClick(item, setState)}
@@ -324,7 +324,7 @@ export const renderSortedItems = (sortedItems, state, setState, toggleDefaultGro
         className="
           flex items-center justify-between
           p-2 px-3 mb-2
-          text-white uppercase bg-primary rounded cursor-pointer hover:bg-secondary
+          text-white uppercase bg-primary rounded-lg cursor-pointer hover:bg-secondary
         "
       >
         Fietsroutes
@@ -351,7 +351,7 @@ export const renderSortedItems = (sortedItems, state, setState, toggleDefaultGro
             return (
               <div
                 key={index}
-                className={`flex items-center gap-2 p-2 rounded cursor-pointer hover:bg-secondary ${itemBgColor}`}
+                className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer hover:bg-secondary ${itemBgColor}`}
                 onClick={() => handleItemClick(item, setState)}
               >
                 <p>{item.data.title}</p>

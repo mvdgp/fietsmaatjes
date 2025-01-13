@@ -56,12 +56,12 @@ const LatestNews = ({ slice }) => {
             return (
               <div
                 key={index}
-                className="group hover:bg-primary hover:text-white w-[350px] h-[400px] bg-secondary rounded p-4 flex flex-col justify-between"
+                className="group hover:bg-primary hover:text-white w-[350px] h-[400px] bg-secondary rounded-lg p-4 flex flex-col justify-between"
               >
                 {hasImage && (
                   <PrismicImage
                     field={item.data.image}
-                    className="rounded w-[340px] h-[150px] object-cover object-center"
+                    className="rounded-lg w-[340px] h-[150px] object-cover object-center"
                   />
                 )}
                 <div
@@ -76,9 +76,14 @@ const LatestNews = ({ slice }) => {
                     field={item.data.title}
                     components={{
                       heading1: ({ children }) => (
-                        <h1 className="group-hover:text-white">
-                          {truncateText(item.data.title[0]?.text, 23)}
-                        </h1>
+                        <h3 className="group-hover:text-white">
+                          {truncateText(item.data.title[0]?.text, 50)}
+                        </h3>
+                      ),
+                      heading2: ({ children }) => (
+                        <h3 className="group-hover:text-white">
+                          {truncateText(item.data.title[0]?.text, 50)}
+                        </h3>
                       ),
                     }}
                   />

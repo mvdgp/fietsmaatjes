@@ -24,7 +24,7 @@ const Post = ({ data, first_publication_date }) => {
           <h6
             className=" 
             relative max-w-[200px]
-            ml-[10px] mt-[-24px] p-1 rounded-t
+            ml-[10px] mt-[-24px] p-1 rounded-t-lg
             font-bold
             text-white text-center
             bg-primary

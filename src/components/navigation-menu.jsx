@@ -74,7 +74,7 @@ const NavigationMenu = ({ menuItems }) => {
       {/* Main menu */}
       <ul
         className={`${
-          isOpen ? "flex-col absolute px-6 pt-8 bg-primary rounded w-[330px]" : "hidden"
+          isOpen ? "flex-col absolute px-6 pt-8 bg-primary rounded-lg w-[330px]" : "hidden"
         } 
         md:flex md:gap-6 md:pb-0 flex gap-6 pb-4`}
       >
@@ -90,7 +90,7 @@ const NavigationMenu = ({ menuItems }) => {
               href={item.url}
               className={`font-bold text-base 
               text-white hover:text-secondary hover:no-underline 
-              ${pathName.includes(item.uid) ? "text-tertiary" : "text-red-500"}`}
+              ${pathName.includes(item.uid) ? "text-tertiary" : ""}`}
               onClick={handleMenuItemClick}
             >
               {item.label}

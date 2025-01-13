@@ -13,6 +13,9 @@ import { ReactSVG } from 'react-svg';
 const InfoCards = ({ slice }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
+  // Filter out empty columns
+  const filteredCards = slice.primary.card.filter(item => item.title || item.body || item.icon);
+
   /**
    * Toggles the expanded state of a card
    * @param {number} index - Index of the card to toggle
@@ -21,14 +24,14 @@ const InfoCards = ({ slice }) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
+  // Determine the grid column class based on the number of filtered cards
+  const gridColsClass = `lg:grid-cols-${Math.min(filteredCards.length, slice.variation === "infoCardsExpandable" ? 3 : 4)}`;
+
   return (
     <section
-      className={`
-        grid grid-cols-1 gap-1 justify-items-center
-        ${slice.variation === "infoCardsExpandable" ? "lg:grid-cols-3" : "lg:grid-cols-4"}
-      `}
+      className={`grid grid-cols-1 gap-1 justify-items-center ${gridColsClass}`}
     >
-      {slice.primary.card.map((item, index) => (
+      {filteredCards.map((item, index) => (
         <InfoCardsItem
           key={index}
           item={item}

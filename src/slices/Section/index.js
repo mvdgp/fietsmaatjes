@@ -74,7 +74,7 @@ const Section = ({ slice }) => {
   const verticalRichTextComponents = {
     heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
     paragraph: ({ children }) => (
-      <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
+      <p className="mt-4 text-justify">
         {children}
       </p>
     ),
@@ -83,7 +83,7 @@ const Section = ({ slice }) => {
   const mirroredRichTextComponents = {
     heading1: ({ children }) => <h1 className="text-justify">{children}</h1>,
     paragraph: ({ children }) => (
-      <p className="mt-4 text-justify" style={{ maxHeight, overflow: 'hidden' }}>
+      <p className="mt-4 text-justify">
         {children}
       </p>
     ),

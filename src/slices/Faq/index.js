@@ -24,23 +24,27 @@ const Faq = ({ slice }) => {
       className="
         p-4
         flex flex-col
-        w-full
+        w-full md:w-[80%]
         gap-4
       "
     >
       <h1>Veelgestelde Vragen</h1>
       {set.map((item, index) => (
-        <div key={index} className="flex flex-col items-start">
+        <div key={index}
+          className="
+          flex flex-col items-start
+          rounded
+          bg-quaternary
+          ">
           <p
-            className={`
+            className="
               flex items-center
               text-primary
               w-full p-2
-              rounded
               justify-start gap-2
               font-bold cursor-pointer
-              ${visibleIndex === index ? "bg-secondary" : index % 2 === 0 ? "bg-white" : "bg-quaternary"}
-            `}
+              text-sm
+            "
             onClick={() => toggleVisibility(index)}
           >
             <svg
@@ -50,16 +54,17 @@ const Faq = ({ slice }) => {
               strokeWidth="1.5"
               stroke="currentColor"
               className={`
-                size-4
+                w-[16px] h-[16px]
                 transition-transform duration-200
-                ${visibleIndex === index ? "rotate-90" : ""}
+                ${visibleIndex === index ? 'rotate-90' : ''}
               `}
+              style={{ minWidth: '16px', minHeight: '16px' }}
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
             {item.question}
           </p>
-          {visibleIndex === index && <p className="ml-6">{item.answer}</p>}
+          {visibleIndex === index && <p className="ml-8 pb-4 pr-6 text-sm text-justify">{item.answer}</p>}
         </div>
       ))}
     </section>

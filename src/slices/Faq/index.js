@@ -24,7 +24,7 @@ const Faq = ({ slice }) => {
       className="
         p-4
         flex flex-col
-        w-full md:w-[80%]
+        w-full h-full md:w-[80%]
         gap-4
       "
     >
@@ -32,7 +32,7 @@ const Faq = ({ slice }) => {
       {set.map((item, index) => (
         <div key={index}
           className="
-          flex flex-col items-start
+          flex flex-col
           rounded
           bg-quaternary
           ">

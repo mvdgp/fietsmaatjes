@@ -26,6 +26,7 @@ const InfoCards = ({ slice }) => {
 
   // Determine the grid column class based on the number of filtered cards
   const gridColsClass = `lg:grid-cols-${Math.min(filteredCards.length, slice.variation === "infoCardsExpandable" ? 3 : 4)}`;
+  console.log(gridColsClass);
 
   return (
     <section
@@ -57,8 +58,8 @@ const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
     <div
       className={`
         my-4 group flex flex-col p-4 border border-primary rounded
-        hover:bg-primary flex-shrink-0 w-[320px] lg:w-[220px] m-4 items-center text-center gap-1
-        ${isExpanded ? 'h-[500px]' : 'h-[200px] lg:h-[300px]'}
+        hover:bg-primary flex-shrink-0 w-[320px] lg:w-[250px] m-4 items-center text-center gap-1
+        ${isExpanded ? 'h-[600px]' : 'h-[200px] lg:h-[300px]'}
       `}
     >
       <ReactSVG

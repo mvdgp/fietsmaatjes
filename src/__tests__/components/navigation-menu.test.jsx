@@ -72,6 +72,6 @@ describe('NavigationMenu', () => {
   test('highlights active menu item', () => {
     nextRouter.usePathname.mockReturnValue('/about');  // Correct path for active item
     render(<NavigationMenu menuItems={mockMenuItems} />);
-    expect(screen.getByText('About')).toHaveClass('text-[#FFEC00]');
+    expect(screen.getByText('About')).toHaveClass('text-tertiary');
   });
 });

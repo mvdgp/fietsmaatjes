@@ -50,7 +50,12 @@ const ContactForm = ({ slice }) => {
         <div>
           <h1 className="px-4 py-4">Contact</h1>
           <div className="p-4 md:max-w-[70dvw]">
-            <PrismicRichText field={slice.primary.body} />
+            <PrismicRichText
+              components={{
+                paragraph: ({ children }) => <p className="pb-2">{children}</p>,
+              }}
+              field={slice.primary.body}
+            />
           </div>
         </div>
       </div>

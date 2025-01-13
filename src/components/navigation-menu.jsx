@@ -90,7 +90,7 @@ const NavigationMenu = ({ menuItems }) => {
               href={item.url}
               className={`font-bold text-base 
               text-white hover:text-secondary hover:no-underline 
-              ${pathName.includes(item.uid) ? "text-[#FFEC00]" : "text-red-500"}`}
+              ${pathName.includes(item.uid) ? "text-tertiary" : "text-red-500"}`}
               onClick={handleMenuItemClick}
             >
               {item.label}

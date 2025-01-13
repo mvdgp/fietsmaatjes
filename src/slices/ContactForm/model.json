@@ -18,7 +18,7 @@
             "label": "Begeleidende tekst",
             "placeholder": "Begeleidende tekst",
             "allowTargetBlank": true,
-            "multi": "strong,em,paragraph,hyperlink,list-item,o-list-item"
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item,image"
           }
         }
       },

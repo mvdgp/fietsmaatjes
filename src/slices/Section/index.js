@@ -24,6 +24,7 @@ const Section = ({ slice }) => {
   const sectionStyles = `
     h-full w-full gap-6
     p-4
+    items-center justify-center
   `;
 
   // Common styles for images
@@ -55,7 +56,7 @@ const Section = ({ slice }) => {
       {slice.primary.image.copyright && (
         <h6
           className=" 
-            relative max-w-[150px]
+            relative max-w-[200px]
             ml-[10px] mt-[-24px] p-1 rounded-t
             font-bold
             text-white text-center
@@ -80,7 +81,7 @@ const Section = ({ slice }) => {
     heading1: ({ children }) => <h1 className="pt-2">{children}</h1>,
     heading2: ({ children }) => <h2 className="pt-2">{children}</h2>,
     heading3: ({ children }) => <h3 className="pt-2">{children}</h3>,
-    paragraph: ({ children }) => <p className="text-justify">{children}</p>,
+    paragraph: ({ children }) => <p className="pt-2 text-justify">{children}</p>,
   };
 
   const verticalRichTextComponents = {

@@ -23,7 +23,7 @@ const Post = ({ data, first_publication_date }) => {
         {data.image.copyright && (
           <h6
             className=" 
-            relative max-w-[150px]
+            relative max-w-[200px]
             ml-[10px] mt-[-24px] p-1 rounded-t
             font-bold
             text-white text-center

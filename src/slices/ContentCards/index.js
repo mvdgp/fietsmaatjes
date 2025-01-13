@@ -12,7 +12,7 @@ import { dateResolver } from '@/utils/helpers';
 const Contentcards = ({ slice }) => {
   return (
     <section className="
-      flex flex-row flex-wrap
+      flex flex-row flex-wrap items-center justify-center
     ">
       {slice.primary.card.map((item, index) => (
         <ContentCardItem key={index} item={item} />
@@ -91,7 +91,7 @@ const ContentCardItem = ({ item }) => {
           text-justify md:text-center 
           text-primary hover:text-white
         ">
-          {item.body.length > 150 
+          {item.body && item.body.length > 150 
             ? `${item.body.substring(0, 150)}...` 
             : item.body}
         </h6>

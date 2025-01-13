@@ -6,7 +6,7 @@ const BikeRoute = ({ data }) => {
     const embedUrl = extractURLfromEmbedMap(data.route);
 
     return (
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col gap-8 items-center justify-center">
 
             {/* Container for the route information */}
             <div className="lg:w-[70%] flex flex-col gap-2">
@@ -16,7 +16,7 @@ const BikeRoute = ({ data }) => {
             
             {/* Embedded map iframe */}
             <iframe
-                className="w-[92dvw] lg:w-[80dvw] lg:w-[50dvw] rounded-lg"
+                className="w-[92dvw] lg:w-[60dvw] rounded-lg"
                 src={embedUrl}
                 width="600"
                 height="450"

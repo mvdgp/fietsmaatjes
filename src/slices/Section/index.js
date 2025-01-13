@@ -46,11 +46,23 @@ const Section = ({ slice }) => {
 
   // Function to render image
   const renderImage = (field, additionalStyles = '') => (
-    <PrismicImage
-      ref={imageRef}
-      field={field}
-      className={`${imageStyles} ${additionalStyles}`}
-    />
+    <div>
+      <PrismicImage
+        ref={imageRef}
+        field={field}
+        className={`${imageStyles} ${additionalStyles}`}
+      />
+      {slice.primary.image.copyright && (
+        <h6
+          className=" 
+            relative max-w-[150px]
+            ml-[10px] mt-[-24px] p-1 rounded-t
+            font-bold
+            text-white text-center
+            bg-primary
+          ">&copy; {slice.primary.image.copyright}</h6>
+      )}
+    </div>
   );
 
   // Function to render section with image and text
@@ -121,11 +133,12 @@ const Section = ({ slice }) => {
       <section className="relative h-full w-full flex flex-col gap-6">
         {renderImage(slice.primary.image, "w-full h-[70dvh]")}
         <div className="absolute inset-0 flex items-end mb-14 justify-center">
-          <div className="p-4 w-full bg-white bg-opacity-60 p-4 md:p-10 flex items-center justify-center">
-            <div className="font-semibold text-white text-center w-full">
-              {renderRichText(slice.primary.body, stackedRichTextComponents)}
-            </div>
-          </div>
+          {slice.primary.body != '' &&
+            <div className="p-4 w-full bg-white bg-opacity-60 p-4 md:p-10 flex items-center justify-center">
+              <div className="font-semibold text-white text-center w-full">
+                {renderRichText(slice.primary.body, stackedRichTextComponents)}
+              </div>
+            </div>}
         </div>
       </section>
     );

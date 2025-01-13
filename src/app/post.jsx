@@ -13,12 +13,24 @@ const Post = ({ data, first_publication_date }) => {
       text-justify
     ">
       {/* Display the image */}
-      <PrismicImage
-        field={data.image}
-        className="
+      <div>
+        <PrismicImage
+          field={data.image}
+          className="
           w-full h-[350px]
           object-cover object-center
         " />
+        {data.image.copyright && (
+          <h6
+            className=" 
+            relative max-w-[150px]
+            ml-[10px] mt-[-24px] p-1 rounded-t
+            font-bold
+            text-white text-center
+            bg-primary
+          ">&copy; {data.image.copyright}</h6>
+        )}
+      </div>
 
       {/* Display the title */}
       <h1 className="mt-2">{data.title[0].text}</h1>

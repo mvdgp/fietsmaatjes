@@ -33,9 +33,6 @@ const LatestNews = ({ slice }) => {
     return text.substring(0, length) + '...';
   };
 
-  // Determine the grid column class based on the number of news items
-  const gridColsClass = `xl:grid-cols-${Math.min(news.length, 3)}`;
-
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -44,7 +41,7 @@ const LatestNews = ({ slice }) => {
     >
       <h1 className="mb-2 border-b pb-2 border-primary">Laatste nieuwsberichten</h1>
       <div
-        className={`p-4 grid grid-cols-1 md:grid-cols-1 ${gridColsClass} justify-items-center gap-4`}
+        className={`p-4 grid grid-cols-1 xl:grid-cols-3 justify-items-center gap-4`}
       >
         {news.length > 0 ? (
           news.map((item, index) => {

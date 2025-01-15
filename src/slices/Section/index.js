@@ -47,7 +47,7 @@ const Section = ({ slice }) => {
 
   // Function to render image
   const renderImage = (field, additionalStyles = '') => (
-    <div>
+    <div className="flex flex-col items-center">
       <PrismicImage
         ref={imageRef}
         field={field}
@@ -57,7 +57,7 @@ const Section = ({ slice }) => {
         <h6
           className=" 
             relative max-w-[200px]
-            ml-[10px] mt-[-24px] p-1 rounded-t-lg
+            ml-[10px] mt-[-24px] py-1 px-2 rounded-t-lg
             font-bold
             text-white text-center
             bg-primary

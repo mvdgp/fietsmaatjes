@@ -13,7 +13,7 @@ const Post = ({ data, first_publication_date }) => {
       text-justify
     ">
       {/* Display the image */}
-      <div>
+      <div className="flex flex-col items-center">
         <PrismicImage
           field={data.image}
           className="
@@ -24,7 +24,7 @@ const Post = ({ data, first_publication_date }) => {
           <h6
             className=" 
             relative max-w-[200px]
-            ml-[10px] mt-[-24px] p-1 rounded-t-lg
+            mt-[-24px] p-1 rounded-t-lg
             font-bold
             text-white text-center
             bg-primary

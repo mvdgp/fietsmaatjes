@@ -94,7 +94,7 @@
                   "label": "Inhoud (uitgeklapt)",
                   "placeholder": "Inhoud (uitgeklapt)",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,preformatted,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item"
+                  "multi": "paragraph,preformatted,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,image"
                 }
               }
             }

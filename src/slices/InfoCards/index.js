@@ -25,11 +25,11 @@ const InfoCards = ({ slice }) => {
   };
 
   // Determine the grid column class based on the number of filtered cards
-  const gridColsClass = `xl:grid-cols-${Math.min(filteredCards.length, slice.variation === "infoCardsExpandable" ? 3 : 4)}`;
+  const gridColsClass = `lg:grid-cols-${Math.min(filteredCards.length, slice.variation === "infoCardsExpandable" ? 3 : 4)}`;
 
   return (
     <section
-      className={`grid grid-cols-1 lg:grid-cols-4 gap-1 justify-items-center ${gridColsClass}`}
+      className={`grid grid-cols-1 gap-1 justify-items-center ${gridColsClass}`}
     >
       {filteredCards.map((item, index) => (
         <InfoCardsItem
@@ -57,8 +57,8 @@ const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
     <div
       className={`
         my-4 group flex flex-col p-4 border border-primary rounded-lg
-        hover:bg-primary flex-shrink-0 w-[320px] lg:w-[250px] m-4 items-center text-center gap-1
-        ${isExpanded ? 'h-[600px]' : 'h-[200px] lg:h-[300px]'}
+        hover:bg-primary w-[320px] md:w-[250px] m-4 items-center justify-center text-center gap-1
+        ${isExpanded ? 'h-[710px]' : 'h-[200px] md:h-[300px]'}
       `}
     >
       <ReactSVG
@@ -79,6 +79,11 @@ const InfoCardsItem = ({ item, variation, isExpanded, toggleExpanded }) => {
             field={item.body_expanded}
             components={{
               paragraph: ({ children }) => <p className="text-xs text-primary group-hover:text-white transition ease-in-out">{children}</p>,
+              hyperlink: ({ node, children }) => (
+                <a href={node.data.url} className="text-secondary hover:underline text-xs">
+                  {children}
+                </a>
+              ),
             }}
           />
         ) : (

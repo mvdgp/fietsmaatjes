@@ -42,14 +42,14 @@ const ContactForm = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="
-        flex w-full h-full p-2 md:p-8 gap-10 
-        flex-col md:flex-row
+        flex w-full h-full p-2 lg:p-8 gap-10 
+        flex-col lg:flex-row
       "
     >
       <div className="text-justify">
         <div>
           <h1 className="px-4 py-4">Contact</h1>
-          <div className="p-4 md:max-w-[70dvw]">
+          <div className="p-4 lg:max-w-[70dvw]">
             <PrismicRichText
               components={{
                 paragraph: ({ children }) => <p className="pb-2">{children}</p>,
@@ -68,8 +68,8 @@ const ContactForm = ({ slice }) => {
           " 
           onSubmit={handleFormSubmit}
         >
-          <div className="md:flex md:gap-2">
-            <label className="md:w-1/2">
+          <div className="lg:flex lg:gap-2">
+            <label className="lg:w-1/2">
               Voornaam: <span className="text-red-500">*</span>
               <input
                 type="text"
@@ -83,7 +83,7 @@ const ContactForm = ({ slice }) => {
                 onChange={handleInputChange}
               />
             </label>
-            <label className="md:w-1/2">
+            <label className="lg:w-1/2">
               Achternaam:
               <input
                 type="text"
@@ -98,8 +98,8 @@ const ContactForm = ({ slice }) => {
               />
             </label>
           </div>
-          <div className="md:flex md:gap-2">
-            <label className="md:w-1/2">
+          <div className="lg:flex lg:gap-2">
+            <label className="lg:w-1/2">
               Email: <span className="text-red-500">*</span>
               <input
                 type="email"
@@ -114,7 +114,7 @@ const ContactForm = ({ slice }) => {
               />
               <ValidationError prefix="Email" field="email" errors={state.errors} />
             </label>
-            <label className="md:w-1/2">
+            <label className="lg:w-1/2">
               Telefoonnummer: <span className="text-red-500">*</span>
               <input
                 type="tel"

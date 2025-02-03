@@ -17,9 +17,9 @@ const SubMenu = ({ menuItem }) => {
                         <a
                             href={subItem.url}
                             className={`
-                                text-sm text-white
+                                text-sm
                                 hover:no-underline flex
-                                hover:text-secondary ${pathName.includes(subItem.uid) ? 'text-tertiary' : ''}
+                                hover:text-secondary ${pathName.includes(subItem.uid) ? 'text-tertiary' : 'text-white'}
                                 gap-4
                             `}
                         >

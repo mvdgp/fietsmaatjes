@@ -89,8 +89,8 @@ const NavigationMenu = ({ menuItems }) => {
             <a
               href={item.url}
               className={`font-bold text-base 
-              text-white hover:text-secondary hover:no-underline 
-              ${pathName.includes(item.uid) ? "text-tertiary" : ""}`}
+              hover:text-secondary hover:no-underline 
+              ${pathName.includes(item.uid) ? "text-tertiary" : "text-white"}`}
               onClick={handleMenuItemClick}
             >
               {item.label}

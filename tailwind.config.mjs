@@ -16,6 +16,10 @@ const tailwindConfig = {
       },
     },
   },
+  safelist: [
+    'text-[#FFEC00]',
+    'text-tertiary',
+  ],
   plugins: [],
 };
 

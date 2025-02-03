@@ -29,7 +29,7 @@ const InfoCards = ({ slice }) => {
 
   return (
     <section
-      className={`grid grid-cols-1 gap-1 justify-items-center ${gridColsClass}`}
+      className={`flex flex-col xl:flex-row justify-items-center`}
     >
       {filteredCards.map((item, index) => (
         <InfoCardsItem

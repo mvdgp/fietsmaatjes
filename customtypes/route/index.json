@@ -19,6 +19,13 @@
           "placeholder": "Titel"
         }
       },
+      "distance": {
+        "type": "Number",
+        "config": {
+          "label": "Afstand",
+          "placeholder": "Afstand in km, noteer zo: 5.3"
+        }
+      },
       "body": {
         "type": "Text",
         "config": {
@@ -31,6 +38,31 @@
         "config": {
           "label": "Route",
           "placeholder": "Fietsroute (google maps embed link)"
+        }
+      },
+      "steps": {
+        "type": "Group",
+        "config": {
+          "label": "Knooppunten",
+          "repeat": true,
+          "fields": {
+            "step": {
+              "type": "Text",
+              "config": {
+                "label": "Knooppunt",
+                "placeholder": "Het adres van het knooppunt"
+              }
+            }
+          }
+        }
+      },
+      "download_route": {
+        "type": "Link",
+        "config": {
+          "label": "Fietsknoop Route",
+          "placeholder": "GPX van de Fietsknoop app toevoegen",
+          "select": "media",
+          "allowText": true
         }
       },
       "slices": {

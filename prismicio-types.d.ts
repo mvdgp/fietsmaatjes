@@ -181,6 +181,21 @@ interface PostDocumentData {
 export type PostDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
 
+/**
+ * Item in *Fietsroute → Knooppunten*
+ */
+export interface RouteDocumentDataStepsItem {
+  /**
+   * Knooppunt field in *Fietsroute → Knooppunten*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Het adres van het knooppunt
+   * - **API ID Path**: route.steps[].step
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  step: prismic.KeyTextField;
+}
+
 type RouteDocumentDataSlicesSlice = never;
 
 /**
@@ -197,6 +212,17 @@ interface RouteDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Afstand field in *Fietsroute*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Afstand in km, noteer zo: 5.3
+   * - **API ID Path**: route.distance
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  distance: prismic.NumberField;
 
   /**
    * Beschrijving field in *Fietsroute*
@@ -219,6 +245,28 @@ interface RouteDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   route: prismic.KeyTextField;
+
+  /**
+   * Knooppunten field in *Fietsroute*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: route.steps[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  steps: prismic.GroupField<Simplify<RouteDocumentDataStepsItem>>;
+
+  /**
+   * Fietsknoop Route field in *Fietsroute*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: GPX van de Fietsknoop app toevoegen
+   * - **API ID Path**: route.download_route
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  download_route: prismic.LinkToMediaField;
 
   /**
    * Slice Zone field in *Fietsroute*
@@ -1206,6 +1254,7 @@ declare module "@prismicio/client" {
       PostDocumentDataSlicesSlice,
       RouteDocument,
       RouteDocumentData,
+      RouteDocumentDataStepsItem,
       RouteDocumentDataSlicesSlice,
       SocialDocument,
       SocialDocumentData,

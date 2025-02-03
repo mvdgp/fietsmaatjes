@@ -148,7 +148,7 @@ const Archive = ({ slice: { variation, slice_type } }) => {
 
   // Sort items by title
   const sortedItems = useMemo(() => {
-    return variation === "default" ? sortItemsByTitle(state.items) : [];
+    return variation === "default" ? sortItemsByDistance(state.items) : [];
   }, [state.items, variation]);
 
   return (
@@ -208,8 +208,8 @@ const groupItemsByDate = (items) => {
 };
 
 // Sort items by title
-const sortItemsByTitle = (items) => {
-  return items.sort((a, b) => a.data.title.localeCompare(b.data.title));
+const sortItemsByDistance = (items) => {
+  return items.sort((a, b) => a.data.distance - b.data.distance);
 };
 
 // Render grouped items
@@ -354,7 +354,7 @@ export const renderSortedItems = (sortedItems, state, setState, toggleDefaultGro
                 className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer hover:bg-secondary ${itemBgColor}`}
                 onClick={() => handleItemClick(item, setState)}
               >
-                <p>{item.data.title}</p>
+                <p>{item.data.title}</p><p className="font-bold">({item.data.distance}km)</p>
               </div>
             );
           })}

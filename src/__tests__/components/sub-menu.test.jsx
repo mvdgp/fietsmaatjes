@@ -33,7 +33,7 @@ describe('SubMenu', () => {
         render(<SubMenu menuItem={mockMenuItem} />);
 
         const activeItem = screen.getByText('Item 1');
-        expect(activeItem).toHaveClass('text-tertiary');
+        expect(activeItem).toHaveClass('text-[#FFEC00]');
     });
 
     test('does not apply active class to inactive submenu items', () => {
@@ -41,6 +41,6 @@ describe('SubMenu', () => {
         render(<SubMenu menuItem={mockMenuItem} />);
 
         const inactiveItem = screen.getByText('Item 2');
-        expect(inactiveItem).not.toHaveClass('text-tertiary');
+        expect(inactiveItem).not.toHaveClass('text-[#FFEC00]');
     });
 });

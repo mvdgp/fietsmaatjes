@@ -33,29 +33,6 @@
           "placeholder": "Korte beschrijving"
         }
       },
-      "route": {
-        "type": "Text",
-        "config": {
-          "label": "Route",
-          "placeholder": "Fietsroute (google maps embed link)"
-        }
-      },
-      "steps": {
-        "type": "Group",
-        "config": {
-          "label": "Knooppunten",
-          "repeat": true,
-          "fields": {
-            "step": {
-              "type": "Text",
-              "config": {
-                "label": "Knooppunt",
-                "placeholder": "Het adres van het knooppunt"
-              }
-            }
-          }
-        }
-      },
       "download_route": {
         "type": "Link",
         "config": {
@@ -63,6 +40,17 @@
           "placeholder": "GPX van de Fietsknoop app toevoegen",
           "select": "media",
           "allowText": true
+        }
+      },
+      "route": {
+        "type": "Image",
+        "config": {
+          "label": "Route",
+          "constraint": {
+            "width": 600,
+            "height": 400
+          },
+          "thumbnails": []
         }
       },
       "slices": {

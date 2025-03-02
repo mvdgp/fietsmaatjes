@@ -170,12 +170,12 @@ const Archive = ({ slice: { variation, slice_type } }) => {
         ) : variation === "default" && sortedItems.length > 0 ? (
           renderSortedItems(sortedItems, state, setState, toggleDefaultGroup)
         ) : (
-          <p>Laden...</p>
+          <p>Geen artikelen beschikbaar :(</p>
         )}
       </div>
       <div className="lg:max-w-[calc(100%-350px)]">
         {state.itemNotFound ? (
-          "artikel niet gevonden"
+          ""
         ) : state.selectedItem ? (
           <div className="item-details">
             {variation === "automatic" ? (

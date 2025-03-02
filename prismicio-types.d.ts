@@ -181,21 +181,6 @@ interface PostDocumentData {
 export type PostDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
 
-/**
- * Item in *Fietsroute → Knooppunten*
- */
-export interface RouteDocumentDataStepsItem {
-  /**
-   * Knooppunt field in *Fietsroute → Knooppunten*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Het adres van het knooppunt
-   * - **API ID Path**: route.steps[].step
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  step: prismic.KeyTextField;
-}
-
 type RouteDocumentDataSlicesSlice = never;
 
 /**
@@ -236,28 +221,6 @@ interface RouteDocumentData {
   body: prismic.KeyTextField;
 
   /**
-   * Route field in *Fietsroute*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Fietsroute (google maps embed link)
-   * - **API ID Path**: route.route
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  route: prismic.KeyTextField;
-
-  /**
-   * Knooppunten field in *Fietsroute*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: route.steps[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  steps: prismic.GroupField<Simplify<RouteDocumentDataStepsItem>>;
-
-  /**
    * Fietsknoop Route field in *Fietsroute*
    *
    * - **Field Type**: Link to Media
@@ -267,6 +230,17 @@ interface RouteDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   download_route: prismic.LinkToMediaField;
+
+  /**
+   * Route field in *Fietsroute*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: route.route
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  route: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *Fietsroute*
@@ -1254,7 +1228,6 @@ declare module "@prismicio/client" {
       PostDocumentDataSlicesSlice,
       RouteDocument,
       RouteDocumentData,
-      RouteDocumentDataStepsItem,
       RouteDocumentDataSlicesSlice,
       SocialDocument,
       SocialDocumentData,

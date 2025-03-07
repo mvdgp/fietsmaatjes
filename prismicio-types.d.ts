@@ -254,6 +254,17 @@ interface RouteDocumentData {
   qr_code: prismic.ImageField<never>;
 
   /**
+   * Route Link field in *Fietsroute*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: route.route_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  route_link: prismic.LinkField;
+
+  /**
    * Slice Zone field in *Fietsroute*
    *
    * - **Field Type**: Slice Zone

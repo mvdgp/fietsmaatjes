@@ -173,11 +173,11 @@ const Archive = ({ slice: { variation, slice_type } }) => {
           <p>Geen artikelen beschikbaar :(</p>
         )}
       </div>
-      <div className="lg:max-w-[calc(100%-350px)]">
+      <div className="w-full lg:max-w-[calc(100%-350px)]">
         {state.itemNotFound ? (
           ""
         ) : state.selectedItem ? (
-          <div className="item-details">
+          <div className="w-full item-details">
             {variation === "automatic" ? (
               <Post {...state.selectedItem} />
             ) : (

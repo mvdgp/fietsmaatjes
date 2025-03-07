@@ -33,11 +33,13 @@ const BikeRoute = ({ data }) => {
                     Je kunt de route ook downloaden via de download knop (hiervoor is een Fietsknoop[+] abonnement vereist).</p>
             </div>
             {/* Container for the map image */}
-            <PrismicImage
-                className="mt-8 w-[90%] rounded-lg"
-                field={data.route}
-                alt={data.title}
-            ></PrismicImage>
+            <a className="w-full" href={data.route_link.url} target="blank">
+                <PrismicImage
+                    className="mt-8 w-[90%] rounded-lg"
+                    field={data.route}
+                    alt={data.title}
+                ></PrismicImage>
+            </a>
 
         </div>
     );

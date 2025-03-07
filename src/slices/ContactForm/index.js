@@ -31,7 +31,7 @@ const ContactForm = ({ slice }) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const { voornaam, email, telefoonnummer, woonplaats } = formData;
-    if (!voornaam || !email || !telefoonnummer || !woonplaats) {
+    if (!voornaam || !email) {
       setErrorMessage('Vul alle verplichte velden in.');
     } else {
       setErrorMessage('');
@@ -117,7 +117,7 @@ const ContactForm = ({ slice }) => {
               <ValidationError prefix="Email" field="email" errors={state.errors} />
             </label>
             <label className="lg:w-1/2">
-              Telefoonnummer: <span className="text-red-500">*</span>
+              Telefoonnummer:
               <input
                 type="tel"
                 name="telefoonnummer"
@@ -132,7 +132,7 @@ const ContactForm = ({ slice }) => {
             </label>
           </div>
           <label>
-            Woonplaats en buurt: <span className="text-red-500">*</span>
+            Woonplaats en buurt:
             <input
               type="text"
               name="woonplaats"

@@ -53,6 +53,14 @@
           "thumbnails": []
         }
       },
+      "qr_code": {
+        "type": "Image",
+        "config": {
+          "label": "QR Code",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

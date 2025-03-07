@@ -16,11 +16,16 @@ const BikeRoute = ({ data }) => {
                     </div>
                 </div>
                 <p className=" mt-4 pt-4 border-t border-primary text-justify">{data.body}</p>
+                <PrismicImage
+                    className="w-[200px] h-[200px]"
+                    field={data.qr_code}
+                    alt={data.title}>
+                </PrismicImage>
             </div>
 
             {/* Container for the map image */}
             <PrismicImage
-                className="ml-40 w-full rounded-lg"
+                className="ml-40 w-[80%] rounded-lg"
                 field={data.route}
                 alt={data.title}
             ></PrismicImage>

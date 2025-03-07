@@ -243,6 +243,17 @@ interface RouteDocumentData {
   route: prismic.ImageField<never>;
 
   /**
+   * QR Code field in *Fietsroute*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: route.qr_code
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  qr_code: prismic.ImageField<never>;
+
+  /**
    * Slice Zone field in *Fietsroute*
    *
    * - **Field Type**: Slice Zone

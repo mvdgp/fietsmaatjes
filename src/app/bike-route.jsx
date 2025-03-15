@@ -29,7 +29,7 @@ const BikeRoute = ({ data }) => {
                 </div>
                 <p className="mt-4 pt-4 border-t border-primary text-justify">{data.body}</p>
                 <br/>
-                <p className="text-justify italic">Scan de QR code of ga naar <a href={data.route_link.url} target="blank">{data.route_link.url}</a> (inloggen noodzakelijk).<br />
+                <p className="text-justify italic">Scan de QR code of ga naar <a href={data.route_link.url} target="blank">{data.route_link.url}</a><br />
                     Je kunt de route ook downloaden via de download knop (hiervoor is een Fietsknoop[+] abonnement vereist).</p>
             </div>
             {/* Container for the map image */}

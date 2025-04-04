@@ -23,6 +23,16 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "inschrijfformulier",
+      "name": "Inschrijfformulier",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
     }
   ]
 }

@@ -423,9 +423,24 @@ export type ContactFormSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Inschrijfformulier variation for ContactForm Slice
+ *
+ * - **API ID**: `inschrijfformulier`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSliceInschrijfformulier = prismic.SharedSliceVariation<
+  "inschrijfformulier",
+  Record<string, never>,
+  never
+>;
+
+/**
  * Slice variation for *ContactForm*
  */
-type ContactFormSliceVariation = ContactFormSliceDefault;
+type ContactFormSliceVariation =
+  | ContactFormSliceDefault
+  | ContactFormSliceInschrijfformulier;
 
 /**
  * ContactForm Shared Slice
@@ -1263,6 +1278,7 @@ declare module "@prismicio/client" {
       ContactFormSliceDefaultPrimary,
       ContactFormSliceVariation,
       ContactFormSliceDefault,
+      ContactFormSliceInschrijfformulier,
       ContentCardsSlice,
       ContentCardsSliceDefaultPrimaryCardItem,
       ContentCardsSliceDefaultPrimary,

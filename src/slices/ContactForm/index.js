@@ -49,7 +49,9 @@ const ContactForm = ({ slice }) => {
       "
     >
       <div className="text-justify">
-        <div>
+        <div className={`
+          ${slice.variation == "inschrijfformulier" ? "hidden" : ""}
+        `}>
           <h1 className="px-4 py-4">Contact</h1>
           <div className="p-4 lg:max-w-[70dvw]">
             <PrismicRichText
